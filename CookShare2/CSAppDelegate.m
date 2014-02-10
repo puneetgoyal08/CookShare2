@@ -7,7 +7,13 @@
 //
 
 #import "CSAppDelegate.h"
+#import "SWRevealViewController.h"
+#import "RearViewController.h"
+#import "FrontViewController.h"
 
+@interface CSAppDelegate() <SWRevealViewControllerDelegate>
+
+@end
 @implementation CSAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -17,6 +23,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    RearViewController *rearViewController = [[RearViewController alloc] init];
+    FrontViewController *frontViewController = [[FrontViewController alloc] init];
+    UINavigationController *frontNavigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
+    UINavigationController *rearNavigationController = [[UINavigationController alloc] initWithRootViewController:rearViewController];
+    
+    SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:rearNavigationController frontViewController:frontNavigationController];
+    revealController.delegate = self;
+    self.window.rootViewController = revealController;
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -145,5 +159,65 @@
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
+
+#define LogDelegates 1
+
+#if LogDelegates
+- (NSString*)stringFromFrontViewPosition:(FrontViewPosition)position
+{
+    NSString *str = nil;
+    if ( position == FrontViewPositionLeftSideMostRemoved ) str = @"FrontViewPositionLeftSideMostRemoved";
+    if ( position == FrontViewPositionLeftSideMost) str = @"FrontViewPositionLeftSideMost";
+    if ( position == FrontViewPositionLeftSide) str = @"FrontViewPositionLeftSide";
+    if ( position == FrontViewPositionLeft ) str = @"FrontViewPositionLeft";
+    if ( position == FrontViewPositionRight ) str = @"FrontViewPositionRight";
+    if ( position == FrontViewPositionRightMost ) str = @"FrontViewPositionRightMost";
+    if ( position == FrontViewPositionRightMostRemoved ) str = @"FrontViewPositionRightMostRemoved";
+    return str;
+}
+
+
+- (void)revealController:(SWRevealViewController *)revealController willMoveToPosition:(FrontViewPosition)position
+{
+    NSLog( @"%@: %@", NSStringFromSelector(_cmd), [self stringFromFrontViewPosition:position]);
+}
+
+- (void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+{
+    NSLog( @"%@: %@", NSStringFromSelector(_cmd), [self stringFromFrontViewPosition:position]);
+}
+
+- (void)revealController:(SWRevealViewController *)revealController animateToPosition:(FrontViewPosition)position
+{
+    NSLog( @"%@: %@", NSStringFromSelector(_cmd), [self stringFromFrontViewPosition:position]);
+}
+
+- (void)revealControllerPanGestureBegan:(SWRevealViewController *)revealController;
+{
+    NSLog( @"%@", NSStringFromSelector(_cmd) );
+}
+
+- (void)revealControllerPanGestureEnded:(SWRevealViewController *)revealController;
+{
+    NSLog( @"%@", NSStringFromSelector(_cmd) );
+}
+
+- (void)revealController:(SWRevealViewController *)revealController panGestureBeganFromLocation:(CGFloat)location progress:(CGFloat)progress
+{
+    NSLog( @"%@: %f, %f", NSStringFromSelector(_cmd), location, progress);
+}
+
+- (void)revealController:(SWRevealViewController *)revealController panGestureMovedToLocation:(CGFloat)location progress:(CGFloat)progress
+{
+    NSLog( @"%@: %f, %f", NSStringFromSelector(_cmd), location, progress);
+}
+
+- (void)revealController:(SWRevealViewController *)revealController panGestureEndedToLocation:(CGFloat)location progress:(CGFloat)progress
+{
+    NSLog( @"%@: %f, %f", NSStringFromSelector(_cmd), location, progress);
+}
+
+#endif
+
 
 @end

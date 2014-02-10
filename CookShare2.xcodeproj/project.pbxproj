@@ -22,6 +22,13 @@
 		EDDA87A618A9300D0071622F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDA878A18A9300D0071622F /* CoreData.framework */; };
 		EDDA87AE18A9300D0071622F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87AC18A9300D0071622F /* InfoPlist.strings */; };
 		EDDA87B018A9300D0071622F /* CookShare2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA87AF18A9300D0071622F /* CookShare2Tests.m */; };
+		EDDA87BD18A930650071622F /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA87BC18A930650071622F /* SWRevealViewController.m */; };
+		EDDA87C218A931130071622F /* RearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA87C018A931130071622F /* RearViewController.m */; };
+		EDDA87C318A931130071622F /* RearViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87C118A931130071622F /* RearViewController.xib */; };
+		EDDA87C818A9314F0071622F /* FrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA87C618A9314F0071622F /* FrontViewController.m */; };
+		EDDA87C918A9314F0071622F /* FrontViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87C718A9314F0071622F /* FrontViewController.xib */; };
+		EDDA87CD18A933310071622F /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87CB18A933310071622F /* reveal-icon.png */; };
+		EDDA87CE18A933310071622F /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87CC18A933310071622F /* reveal-icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +60,16 @@
 		EDDA87AB18A9300D0071622F /* CookShare2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CookShare2Tests-Info.plist"; sourceTree = "<group>"; };
 		EDDA87AD18A9300D0071622F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EDDA87AF18A9300D0071622F /* CookShare2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CookShare2Tests.m; sourceTree = "<group>"; };
+		EDDA87BB18A930640071622F /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		EDDA87BC18A930650071622F /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		EDDA87BF18A931130071622F /* RearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RearViewController.h; sourceTree = "<group>"; };
+		EDDA87C018A931130071622F /* RearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RearViewController.m; sourceTree = "<group>"; };
+		EDDA87C118A931130071622F /* RearViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RearViewController.xib; sourceTree = "<group>"; };
+		EDDA87C518A9314F0071622F /* FrontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontViewController.h; sourceTree = "<group>"; };
+		EDDA87C618A9314F0071622F /* FrontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontViewController.m; sourceTree = "<group>"; };
+		EDDA87C718A9314F0071622F /* FrontViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FrontViewController.xib; sourceTree = "<group>"; };
+		EDDA87CB18A933310071622F /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
+		EDDA87CC18A933310071622F /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +132,8 @@
 		EDDA878C18A9300D0071622F /* CookShare2 */ = {
 			isa = PBXGroup;
 			children = (
+				EDDA87CF18A933370071622F /* res */,
+				EDDA87B918A9305A0071622F /* src */,
 				EDDA879518A9300D0071622F /* CSAppDelegate.h */,
 				EDDA879618A9300D0071622F /* CSAppDelegate.m */,
 				EDDA879B18A9300D0071622F /* Images.xcassets */,
@@ -151,6 +170,70 @@
 				EDDA87AC18A9300D0071622F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EDDA87B918A9305A0071622F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA87BA18A9305D0071622F /* views */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		EDDA87BA18A9305D0071622F /* views */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA87CA18A931550071622F /* FrontViewController */,
+				EDDA87C418A9312C0071622F /* RearViewController */,
+				EDDA87BE18A930690071622F /* SWRevealViewController */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		EDDA87BE18A930690071622F /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA87BB18A930640071622F /* SWRevealViewController.h */,
+				EDDA87BC18A930650071622F /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		EDDA87C418A9312C0071622F /* RearViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA87BF18A931130071622F /* RearViewController.h */,
+				EDDA87C018A931130071622F /* RearViewController.m */,
+				EDDA87C118A931130071622F /* RearViewController.xib */,
+			);
+			name = RearViewController;
+			sourceTree = "<group>";
+		};
+		EDDA87CA18A931550071622F /* FrontViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA87C518A9314F0071622F /* FrontViewController.h */,
+				EDDA87C618A9314F0071622F /* FrontViewController.m */,
+				EDDA87C718A9314F0071622F /* FrontViewController.xib */,
+			);
+			name = FrontViewController;
+			sourceTree = "<group>";
+		};
+		EDDA87CF18A933370071622F /* res */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA87D018A933390071622F /* images */,
+			);
+			name = res;
+			sourceTree = "<group>";
+		};
+		EDDA87D018A933390071622F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA87CB18A933310071622F /* reveal-icon.png */,
+				EDDA87CC18A933310071622F /* reveal-icon@2x.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,8 +312,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDDA87C918A9314F0071622F /* FrontViewController.xib in Resources */,
 				EDDA879118A9300D0071622F /* InfoPlist.strings in Resources */,
+				EDDA87CE18A933310071622F /* reveal-icon@2x.png in Resources */,
+				EDDA87C318A931130071622F /* RearViewController.xib in Resources */,
 				EDDA879C18A9300D0071622F /* Images.xcassets in Resources */,
+				EDDA87CD18A933310071622F /* reveal-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,9 +336,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDDA87C818A9314F0071622F /* FrontViewController.m in Sources */,
 				EDDA879718A9300D0071622F /* CSAppDelegate.m in Sources */,
 				EDDA879318A9300D0071622F /* main.m in Sources */,
 				EDDA879A18A9300D0071622F /* CookShare2.xcdatamodeld in Sources */,
+				EDDA87BD18A930650071622F /* SWRevealViewController.m in Sources */,
+				EDDA87C218A931130071622F /* RearViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
