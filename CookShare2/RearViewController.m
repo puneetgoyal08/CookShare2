@@ -30,6 +30,9 @@
 
 #import "SWRevealViewController.h"
 #import "FrontViewController.h"
+#import "CategoriesViewController.h"
+#import "NewViewController.h"
+#import "SettingsViewController.h"
 
 @interface RearViewController()
 
@@ -47,7 +50,7 @@
 {
 	[super viewDidLoad];
 	
-	self.title = NSLocalizedString(@"Rear View", nil);
+	self.title = NSLocalizedString(@"Menu", nil);
 }
 
 
@@ -66,24 +69,44 @@
 	
 	if (nil == cell)
 	{
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
 	}
 	
 	if (row == 0)
 	{
-		cell.textLabel.text = @"Front View Controller";
+        UILabel *cellName = [[UILabel alloc] initWithFrame:CGRectMake(50, cell.frame.origin.y, cell.frame.size.width-50, cell.frame.size.height)];
+        cellName.text = @"Home";
+        UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(3, 5, 30, 30)];
+        iv.image = [UIImage imageNamed:@"home.png"];
+        [cell.contentView addSubview:iv];
+        [cell.contentView addSubview:cellName];
 	}
 	else if (row == 1)
 	{
-		cell.textLabel.text = @"Map View Controller";
+        UILabel *cellName = [[UILabel alloc] initWithFrame:CGRectMake(50, cell.frame.origin.y, cell.frame.size.width-50, cell.frame.size.height)];
+        cellName.text = @"Categories";
+        UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(3, 5, 30, 30)];
+        iv.image = [UIImage imageNamed:@"flower.png"];
+        [cell.contentView addSubview:iv];
+        [cell.contentView addSubview:cellName];
 	}
 	else if (row == 2)
 	{
-		cell.textLabel.text = @"Enter Presentation Mode";
+        UILabel *cellName = [[UILabel alloc] initWithFrame:CGRectMake(50, cell.frame.origin.y, cell.frame.size.width-50, cell.frame.size.height)];
+        cellName.text = @"Whats New?";
+        UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(3, 5, 30, 30)];
+        iv.image = [UIImage imageNamed:@"new.png"];
+        [cell.contentView addSubview:iv];
+        [cell.contentView addSubview:cellName];
 	}
 	else if (row == 3)
 	{
-		cell.textLabel.text = @"Resign Presentation Mode";
+        UILabel *cellName = [[UILabel alloc] initWithFrame:CGRectMake(50, cell.frame.origin.y, cell.frame.size.width-50, cell.frame.size.height)];
+        cellName.text = @"Settings";
+        UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(3, 5, 30, 30)];
+        iv.image = [UIImage imageNamed:@"spanner.png"];
+        [cell.contentView addSubview:iv];
+        [cell.contentView addSubview:cellName];
 	}
 	
 	return cell;
@@ -118,27 +141,42 @@
 	// ... and the second row (=1) corresponds to the "MapViewController".
 	else if (row == 1)
 	{
-		// Now let's see if we're not attempting to swap the current frontViewController for a new instance of ITSELF, which'd be highly redundant.
-//        if ( ![frontNavigationController.topViewController isKindOfClass:[MapViewController class]] )
-//        {
-//			MapViewController *mapViewController = [[MapViewController alloc] init];
-//			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mapViewController];
-//			[revealController setFrontViewController:navigationController animated:YES];
-//		}
-//        
-//		// Seems the user attempts to 'switch' to exactly the same controller he came from!
-//		else
-//		{
-//			[revealController revealToggle:self];
-//		}
+        if ( ![frontNavigationController.topViewController isKindOfClass:[CategoriesViewController class]] )
+        {
+            CategoriesViewController *catViewController = [[CategoriesViewController alloc] initWithNibName:@"CategoriesViewController" bundle:nil];
+            [revealController setFrontViewController:[[UINavigationController alloc] initWithRootViewController:catViewController] animated:YES];
+        }
+		// Seems the user attempts to 'switch' to exactly the same controller he came from!
+		else
+		{
+			[revealController revealToggle:self];
+		}
 	}
 	else if (row == 2)
 	{
-        [revealController setFrontViewPosition:FrontViewPositionRightMost animated:YES];
+        if ( ![frontNavigationController.topViewController isKindOfClass:[NewViewController class]] )
+        {
+            NewViewController *newVC = [[NewViewController alloc] initWithNibName:@"NewViewController" bundle:nil];
+            [revealController setFrontViewController:[[UINavigationController alloc] initWithRootViewController:newVC] animated:YES];
+        }
+		// Seems the user attempts to 'switch' to exactly the same controller he came from!
+		else
+		{
+			[revealController revealToggle:self];
+		}
 	}
 	else if (row == 3)
 	{
-        [revealController setFrontViewPosition:FrontViewPositionRight animated:YES];
+        if ( ![frontNavigationController.topViewController isKindOfClass:[SettingsViewController class]] )
+        {
+            SettingsViewController *settingsVC = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+            [revealController setFrontViewController:[[UINavigationController alloc] initWithRootViewController:settingsVC] animated:YES];
+        }
+		// Seems the user attempts to 'switch' to exactly the same controller he came from!
+		else
+		{
+			[revealController revealToggle:self];
+		}
 	}
 }
 

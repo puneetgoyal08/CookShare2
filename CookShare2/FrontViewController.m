@@ -43,7 +43,7 @@
 {
 	[super viewDidLoad];
 	
-	self.title = NSLocalizedString(@"Front View", nil);
+	self.title = NSLocalizedString(@"Home", nil);
     
     SWRevealViewController *revealController = [self revealViewController];
     

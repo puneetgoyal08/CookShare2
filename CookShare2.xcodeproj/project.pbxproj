@@ -29,6 +29,18 @@
 		EDDA87C918A9314F0071622F /* FrontViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87C718A9314F0071622F /* FrontViewController.xib */; };
 		EDDA87CD18A933310071622F /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87CB18A933310071622F /* reveal-icon.png */; };
 		EDDA87CE18A933310071622F /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87CC18A933310071622F /* reveal-icon@2x.png */; };
+		EDDA87D218A937B10071622F /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87D118A937B10071622F /* home.png */; };
+		EDDA87D418A937D00071622F /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87D318A937D00071622F /* gear.png */; };
+		EDDA87D618A937EB0071622F /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87D518A937EB0071622F /* new.png */; };
+		EDDA87D818A938420071622F /* flower.png in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87D718A938420071622F /* flower.png */; };
+		EDDA87DA18A938850071622F /* spanner.png in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87D918A938850071622F /* spanner.png */; };
+		EDDA87DC18A938910071622F /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87DB18A938910071622F /* star.png */; };
+		EDDA87E518A940CB0071622F /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA87E318A940CB0071622F /* CategoriesViewController.m */; };
+		EDDA87E618A940CB0071622F /* CategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87E418A940CB0071622F /* CategoriesViewController.xib */; };
+		EDDA87EA18A940D60071622F /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA87E818A940D60071622F /* NewViewController.m */; };
+		EDDA87EB18A940D60071622F /* NewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87E918A940D60071622F /* NewViewController.xib */; };
+		EDDA87EF18A940E10071622F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA87ED18A940E10071622F /* SettingsViewController.m */; };
+		EDDA87F018A940E10071622F /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87EE18A940E10071622F /* SettingsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +82,21 @@
 		EDDA87C718A9314F0071622F /* FrontViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FrontViewController.xib; sourceTree = "<group>"; };
 		EDDA87CB18A933310071622F /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		EDDA87CC18A933310071622F /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
+		EDDA87D118A937B10071622F /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		EDDA87D318A937D00071622F /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
+		EDDA87D518A937EB0071622F /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
+		EDDA87D718A938420071622F /* flower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flower.png; sourceTree = "<group>"; };
+		EDDA87D918A938850071622F /* spanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spanner.png; sourceTree = "<group>"; };
+		EDDA87DB18A938910071622F /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		EDDA87E218A940CB0071622F /* CategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
+		EDDA87E318A940CB0071622F /* CategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
+		EDDA87E418A940CB0071622F /* CategoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesViewController.xib; sourceTree = "<group>"; };
+		EDDA87E718A940D60071622F /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
+		EDDA87E818A940D60071622F /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
+		EDDA87E918A940D60071622F /* NewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewViewController.xib; sourceTree = "<group>"; };
+		EDDA87EC18A940E10071622F /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		EDDA87ED18A940E10071622F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		EDDA87EE18A940E10071622F /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +210,9 @@
 		EDDA87BA18A9305D0071622F /* views */ = {
 			isa = PBXGroup;
 			children = (
+				EDDA87E118A940890071622F /* SettingsViewController */,
+				EDDA87DF18A940680071622F /* NewViewController */,
+				EDDA87DD18A9405B0071622F /* CategoriesViewController */,
 				EDDA87CA18A931550071622F /* FrontViewController */,
 				EDDA87C418A9312C0071622F /* RearViewController */,
 				EDDA87BE18A930690071622F /* SWRevealViewController */,
@@ -230,10 +260,46 @@
 		EDDA87D018A933390071622F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				EDDA87D118A937B10071622F /* home.png */,
 				EDDA87CB18A933310071622F /* reveal-icon.png */,
 				EDDA87CC18A933310071622F /* reveal-icon@2x.png */,
+				EDDA87D318A937D00071622F /* gear.png */,
+				EDDA87D518A937EB0071622F /* new.png */,
+				EDDA87DB18A938910071622F /* star.png */,
+				EDDA87D718A938420071622F /* flower.png */,
+				EDDA87D918A938850071622F /* spanner.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		EDDA87DD18A9405B0071622F /* CategoriesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA87E218A940CB0071622F /* CategoriesViewController.h */,
+				EDDA87E318A940CB0071622F /* CategoriesViewController.m */,
+				EDDA87E418A940CB0071622F /* CategoriesViewController.xib */,
+			);
+			name = CategoriesViewController;
+			sourceTree = "<group>";
+		};
+		EDDA87DF18A940680071622F /* NewViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA87E718A940D60071622F /* NewViewController.h */,
+				EDDA87E818A940D60071622F /* NewViewController.m */,
+				EDDA87E918A940D60071622F /* NewViewController.xib */,
+			);
+			name = NewViewController;
+			sourceTree = "<group>";
+		};
+		EDDA87E118A940890071622F /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA87EC18A940E10071622F /* SettingsViewController.h */,
+				EDDA87ED18A940E10071622F /* SettingsViewController.m */,
+				EDDA87EE18A940E10071622F /* SettingsViewController.xib */,
+			);
+			name = SettingsViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,9 +380,18 @@
 			files = (
 				EDDA87C918A9314F0071622F /* FrontViewController.xib in Resources */,
 				EDDA879118A9300D0071622F /* InfoPlist.strings in Resources */,
+				EDDA87DA18A938850071622F /* spanner.png in Resources */,
+				EDDA87D418A937D00071622F /* gear.png in Resources */,
+				EDDA87F018A940E10071622F /* SettingsViewController.xib in Resources */,
+				EDDA87D618A937EB0071622F /* new.png in Resources */,
+				EDDA87E618A940CB0071622F /* CategoriesViewController.xib in Resources */,
+				EDDA87DC18A938910071622F /* star.png in Resources */,
+				EDDA87D218A937B10071622F /* home.png in Resources */,
 				EDDA87CE18A933310071622F /* reveal-icon@2x.png in Resources */,
 				EDDA87C318A931130071622F /* RearViewController.xib in Resources */,
 				EDDA879C18A9300D0071622F /* Images.xcassets in Resources */,
+				EDDA87EB18A940D60071622F /* NewViewController.xib in Resources */,
+				EDDA87D818A938420071622F /* flower.png in Resources */,
 				EDDA87CD18A933310071622F /* reveal-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,9 +414,12 @@
 				EDDA87C818A9314F0071622F /* FrontViewController.m in Sources */,
 				EDDA879718A9300D0071622F /* CSAppDelegate.m in Sources */,
 				EDDA879318A9300D0071622F /* main.m in Sources */,
+				EDDA87EF18A940E10071622F /* SettingsViewController.m in Sources */,
+				EDDA87E518A940CB0071622F /* CategoriesViewController.m in Sources */,
 				EDDA879A18A9300D0071622F /* CookShare2.xcdatamodeld in Sources */,
 				EDDA87BD18A930650071622F /* SWRevealViewController.m in Sources */,
 				EDDA87C218A931130071622F /* RearViewController.m in Sources */,
+				EDDA87EA18A940D60071622F /* NewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
