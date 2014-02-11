@@ -41,6 +41,10 @@
 		EDDA87EB18A940D60071622F /* NewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87E918A940D60071622F /* NewViewController.xib */; };
 		EDDA87EF18A940E10071622F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA87ED18A940E10071622F /* SettingsViewController.m */; };
 		EDDA87F018A940E10071622F /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDA87EE18A940E10071622F /* SettingsViewController.xib */; };
+		EDDA87F618A948F50071622F /* RecipeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA87F518A948F50071622F /* RecipeCollectionViewCell.m */; };
+		EDDA881618AA08BF0071622F /* food_items in Resources */ = {isa = PBXBuildFile; fileRef = EDDA881518AA08BF0071622F /* food_items */; };
+		EDDA882118AA2E450071622F /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA881F18AA2E450071622F /* RecipeViewController.m */; };
+		EDDA882218AA2E450071622F /* RecipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDA882018AA2E450071622F /* RecipeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +101,12 @@
 		EDDA87EC18A940E10071622F /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		EDDA87ED18A940E10071622F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		EDDA87EE18A940E10071622F /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		EDDA87F418A948F50071622F /* RecipeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCollectionViewCell.h; sourceTree = "<group>"; };
+		EDDA87F518A948F50071622F /* RecipeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCollectionViewCell.m; sourceTree = "<group>"; };
+		EDDA881518AA08BF0071622F /* food_items */ = {isa = PBXFileReference; lastKnownFileType = folder; path = food_items; sourceTree = "<group>"; };
+		EDDA881E18AA2E450071622F /* RecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeViewController.h; sourceTree = "<group>"; };
+		EDDA881F18AA2E450071622F /* RecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeViewController.m; sourceTree = "<group>"; };
+		EDDA882018AA2E450071622F /* RecipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +220,7 @@
 		EDDA87BA18A9305D0071622F /* views */ = {
 			isa = PBXGroup;
 			children = (
+				EDDA881D18AA2E2B0071622F /* RecipeViewController */,
 				EDDA87E118A940890071622F /* SettingsViewController */,
 				EDDA87DF18A940680071622F /* NewViewController */,
 				EDDA87DD18A9405B0071622F /* CategoriesViewController */,
@@ -242,6 +253,7 @@
 		EDDA87CA18A931550071622F /* FrontViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EDDA87F318A948C20071622F /* RecipeCollectionViewCell */,
 				EDDA87C518A9314F0071622F /* FrontViewController.h */,
 				EDDA87C618A9314F0071622F /* FrontViewController.m */,
 				EDDA87C718A9314F0071622F /* FrontViewController.xib */,
@@ -252,6 +264,7 @@
 		EDDA87CF18A933370071622F /* res */ = {
 			isa = PBXGroup;
 			children = (
+				EDDA881518AA08BF0071622F /* food_items */,
 				EDDA87D018A933390071622F /* images */,
 			);
 			name = res;
@@ -302,6 +315,25 @@
 			name = SettingsViewController;
 			sourceTree = "<group>";
 		};
+		EDDA87F318A948C20071622F /* RecipeCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA87F418A948F50071622F /* RecipeCollectionViewCell.h */,
+				EDDA87F518A948F50071622F /* RecipeCollectionViewCell.m */,
+			);
+			name = RecipeCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		EDDA881D18AA2E2B0071622F /* RecipeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA881E18AA2E450071622F /* RecipeViewController.h */,
+				EDDA881F18AA2E450071622F /* RecipeViewController.m */,
+				EDDA882018AA2E450071622F /* RecipeViewController.xib */,
+			);
+			name = RecipeViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -350,6 +382,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Puneet Goyal";
 				TargetAttributes = {
+					EDDA878018A9300D0071622F = {
+						DevelopmentTeam = HC9GUA88Q8;
+					};
 					EDDA87A018A9300D0071622F = {
 						TestTargetID = EDDA878018A9300D0071622F;
 					};
@@ -381,11 +416,13 @@
 				EDDA87C918A9314F0071622F /* FrontViewController.xib in Resources */,
 				EDDA879118A9300D0071622F /* InfoPlist.strings in Resources */,
 				EDDA87DA18A938850071622F /* spanner.png in Resources */,
+				EDDA881618AA08BF0071622F /* food_items in Resources */,
 				EDDA87D418A937D00071622F /* gear.png in Resources */,
 				EDDA87F018A940E10071622F /* SettingsViewController.xib in Resources */,
 				EDDA87D618A937EB0071622F /* new.png in Resources */,
 				EDDA87E618A940CB0071622F /* CategoriesViewController.xib in Resources */,
 				EDDA87DC18A938910071622F /* star.png in Resources */,
+				EDDA882218AA2E450071622F /* RecipeViewController.xib in Resources */,
 				EDDA87D218A937B10071622F /* home.png in Resources */,
 				EDDA87CE18A933310071622F /* reveal-icon@2x.png in Resources */,
 				EDDA87C318A931130071622F /* RearViewController.xib in Resources */,
@@ -417,8 +454,10 @@
 				EDDA87EF18A940E10071622F /* SettingsViewController.m in Sources */,
 				EDDA87E518A940CB0071622F /* CategoriesViewController.m in Sources */,
 				EDDA879A18A9300D0071622F /* CookShare2.xcdatamodeld in Sources */,
+				EDDA87F618A948F50071622F /* RecipeCollectionViewCell.m in Sources */,
 				EDDA87BD18A930650071622F /* SWRevealViewController.m in Sources */,
 				EDDA87C218A931130071622F /* RearViewController.m in Sources */,
+				EDDA882118AA2E450071622F /* RecipeViewController.m in Sources */,
 				EDDA87EA18A940D60071622F /* NewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,10 +579,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CookShare2/CookShare2-Prefix.pch";
 				INFOPLIST_FILE = "CookShare2/CookShare2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -553,10 +596,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CookShare2/CookShare2-Prefix.pch";
 				INFOPLIST_FILE = "CookShare2/CookShare2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -622,6 +669,7 @@
 				EDDA87B518A9300D0071622F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EDDA87B618A9300D0071622F /* Build configuration list for PBXNativeTarget "CookShare2Tests" */ = {
 			isa = XCConfigurationList;
@@ -630,6 +678,7 @@
 				EDDA87B818A9300D0071622F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -26,11 +26,10 @@
 
 #import "FrontViewController.h"
 #import "SWRevealViewController.h"
+#import "RecipeCollectionViewCell.h"
+#import "RecipeViewController.h"
 
 @interface FrontViewController()
-
-// Private Methods:
-- (IBAction)pushExample:(id)sender;
 
 @end
 
@@ -55,17 +54,46 @@
     
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     
+    [self.collectionView registerClass:[RecipeCollectionViewCell class] forCellWithReuseIdentifier:@"recipeIcon"];
+    
 }
 
-#pragma mark - Example Code
+#pragma mark - UICollectionView Methods
 
-- (IBAction)pushExample:(id)sender
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-	UIViewController *stubController = [[UIViewController alloc] init];
-	stubController.view.backgroundColor = [UIColor whiteColor];
-	[self.navigationController pushViewController:stubController animated:YES];
+    NSArray *photoArray = [[NSBundle mainBundle] pathsForResourcesOfType:@".jpg" inDirectory:@"food_items"];
+    return  photoArray.count;
 }
 
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    RecipeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"recipeIcon" forIndexPath:indexPath];
+    for(UIView *view in cell.subviews)
+        [view removeFromSuperview];
+    NSArray *photoArray = [[NSBundle mainBundle] pathsForResourcesOfType:@".jpg" inDirectory:@"food_items"];
+    NSString *path = [photoArray objectAtIndex:indexPath.row];
+    UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:path]];
+    iv.frame = CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height);
+    iv.contentMode = UIViewContentModeScaleAspectFit;
+//    UIImage *pic = [UIImage imageWithContentsOfFile:path];
+//    pic.
+//    cell.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageWithContentsOfFile:path]];
+    [cell addSubview:iv];
+    return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    RecipeViewController *recipeVC = [[RecipeViewController alloc] initWithNibName:@"RecipeViewController" bundle:nil];
+    [[self navigationController] pushViewController:recipeVC animated:YES];
+    //IMPLEMENT this method
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(150, 150);
+}
 
 //- (void)viewWillAppear:(BOOL)animated
 //{

@@ -26,6 +26,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FrontViewController : UIViewController
+@interface FrontViewController : UICollectionViewController<UICollectionViewDelegateFlowLayout>
 
 @end

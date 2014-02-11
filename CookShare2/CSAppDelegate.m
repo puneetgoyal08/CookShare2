@@ -24,7 +24,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     RearViewController *rearViewController = [[RearViewController alloc] init];
-    FrontViewController *frontViewController = [[FrontViewController alloc] init];
+    FrontViewController *frontViewController = [[FrontViewController alloc] initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
     UINavigationController *frontNavigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
     UINavigationController *rearNavigationController = [[UINavigationController alloc] initWithRootViewController:rearViewController];
     
