@@ -1,0 +1,148 @@
+//
+//  AddNewDishViewController.m
+//  CookShare2
+//
+//  Created by Puneet Goyal on 12/02/14.
+//  Copyright (c) 2014 Puneet Goyal. All rights reserved.
+//
+
+#import "AddNewDishViewController.h"
+
+@interface AddNewDishViewController ()
+
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@end
+
+@implementation AddNewDishViewController
+@synthesize tableView = _tableView;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+
+    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (UIView *)textViewWithTitle:(NSString *)title
+{
+    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width, 40)];
+    textView.textColor = [UIColor lightGrayColor];
+    textView.text = title;
+    textView.delegate = self;
+    return textView;
+}
+
+- (UIView *)imageViewWithImage:(UIImage *)image
+{
+    UIImageView *iv = [[UIImageView alloc] initWithImage:image];
+    iv.frame = CGRectMake(10, 7, self.view.frame.size.width, 30);
+    UITapGestureRecognizer *singleTap =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapping:)];
+    [singleTap setNumberOfTapsRequired:1];
+
+    [iv addGestureRecognizer:singleTap];
+    iv.contentMode = UIViewContentModeScaleAspectFit;
+    return iv;
+}
+
+- (UIView *)buttonWithTitle:(NSString *)title
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self
+               action:@selector(buttonTapped:)
+     forControlEvents:UIControlEventTouchDown];
+    [button setTitle:title forState:UIControlStateNormal];
+    button.frame = CGRectMake(10, 7, 160.0, 30);
+    return button;
+}
+
+- (IBAction)singleTapping:(id)sender
+{
+    if([sender isKindOfClass:[UIImageView class]])
+    {
+        
+    }
+    NSLog(@"Upload button tapped");
+}
+
+- (IBAction)buttonTapped:(UIButton *)sender
+{
+    if([sender isKindOfClass:[UIButton class]])
+    {
+        if([sender.titleLabel.text isEqualToString:@"Upload"])
+            NSLog(@"upload tapped");
+        else if([sender.titleLabel.text isEqualToString:@"Submit"])
+            NSLog(@"submit tapped");
+    }
+}
+
+#pragma mark - Table View Methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    for(UIView *view in cell.contentView.subviews)
+        [view removeFromSuperview];
+
+    switch (indexPath.row) {
+        case 0:
+            [cell.contentView addSubview:[self textViewWithTitle:@"Title of your dish"]];
+            break;
+        case 1:
+            [cell.contentView addSubview:[self textViewWithTitle:@"Description of your dish"]];
+            break;
+        case 2:
+            [cell.contentView addSubview:[self buttonWithTitle:@"Upload"]];
+            break;
+        case 3:
+            [cell.contentView addSubview:[self buttonWithTitle:@"Submit"]];
+            break;
+        default:
+            break;
+    }
+    return cell;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+#pragma mark - TextField Delegate Methods
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    NSLog(@"%@", textView.text);
+}
+
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    if(textView.textColor == [UIColor lightGrayColor]){
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor];
+    }
+    return YES;
+}
+
+
+@end

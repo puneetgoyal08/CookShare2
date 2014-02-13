@@ -28,6 +28,7 @@
 #import "SWRevealViewController.h"
 #import "RecipeCollectionViewCell.h"
 #import "RecipeViewController.h"
+#import "AddNewDishViewController.h"
 
 @interface FrontViewController()
 
@@ -53,9 +54,15 @@
         style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
     
     self.navigationItem.leftBarButtonItem = revealButtonItem;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewDish:)];
     
     [self.collectionView registerClass:[RecipeCollectionViewCell class] forCellWithReuseIdentifier:@"recipeIcon"];
     
+}
+
+- (IBAction)addNewDish:(id)sender
+{
+    [[self navigationController]pushViewController:[[AddNewDishViewController alloc] init] animated:YES];
 }
 
 #pragma mark - UICollectionView Methods

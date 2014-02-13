@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED5407B418ACAFB6001277A7 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = ED5407B318ACAFB6001277A7 /* submit.png */; };
 		EDDA878518A9300D0071622F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDA878418A9300D0071622F /* Foundation.framework */; };
 		EDDA878718A9300D0071622F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDA878618A9300D0071622F /* CoreGraphics.framework */; };
 		EDDA878918A9300D0071622F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDA878818A9300D0071622F /* UIKit.framework */; };
@@ -45,6 +46,10 @@
 		EDDA881618AA08BF0071622F /* food_items in Resources */ = {isa = PBXBuildFile; fileRef = EDDA881518AA08BF0071622F /* food_items */; };
 		EDDA882118AA2E450071622F /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA881F18AA2E450071622F /* RecipeViewController.m */; };
 		EDDA882218AA2E450071622F /* RecipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDA882018AA2E450071622F /* RecipeViewController.xib */; };
+		EDDA882718AB50320071622F /* AddNewDishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA882518AB50320071622F /* AddNewDishViewController.m */; };
+		EDDA882818AB50320071622F /* AddNewDishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDA882618AB50320071622F /* AddNewDishViewController.xib */; };
+		EDDA882C18AB728A0071622F /* TextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA882B18AB728A0071622F /* TextViewCell.m */; };
+		EDDA883518AC99180071622F /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = EDDA883418AC99180071622F /* upload.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED5407B318ACAFB6001277A7 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
 		EDDA878118A9300D0071622F /* CookShare2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookShare2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDDA878418A9300D0071622F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EDDA878618A9300D0071622F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -107,6 +113,12 @@
 		EDDA881E18AA2E450071622F /* RecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeViewController.h; sourceTree = "<group>"; };
 		EDDA881F18AA2E450071622F /* RecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeViewController.m; sourceTree = "<group>"; };
 		EDDA882018AA2E450071622F /* RecipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeViewController.xib; sourceTree = "<group>"; };
+		EDDA882418AB50320071622F /* AddNewDishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewDishViewController.h; sourceTree = "<group>"; };
+		EDDA882518AB50320071622F /* AddNewDishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewDishViewController.m; sourceTree = "<group>"; };
+		EDDA882618AB50320071622F /* AddNewDishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewDishViewController.xib; sourceTree = "<group>"; };
+		EDDA882A18AB728A0071622F /* TextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewCell.h; sourceTree = "<group>"; };
+		EDDA882B18AB728A0071622F /* TextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewCell.m; sourceTree = "<group>"; };
+		EDDA883418AC99180071622F /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +232,7 @@
 		EDDA87BA18A9305D0071622F /* views */ = {
 			isa = PBXGroup;
 			children = (
+				EDDA882318AB501B0071622F /* AddNewDishViewController */,
 				EDDA881D18AA2E2B0071622F /* RecipeViewController */,
 				EDDA87E118A940890071622F /* SettingsViewController */,
 				EDDA87DF18A940680071622F /* NewViewController */,
@@ -275,8 +288,10 @@
 			children = (
 				EDDA87D118A937B10071622F /* home.png */,
 				EDDA87CB18A933310071622F /* reveal-icon.png */,
+				EDDA883418AC99180071622F /* upload.png */,
 				EDDA87CC18A933310071622F /* reveal-icon@2x.png */,
 				EDDA87D318A937D00071622F /* gear.png */,
+				ED5407B318ACAFB6001277A7 /* submit.png */,
 				EDDA87D518A937EB0071622F /* new.png */,
 				EDDA87DB18A938910071622F /* star.png */,
 				EDDA87D718A938420071622F /* flower.png */,
@@ -332,6 +347,26 @@
 				EDDA882018AA2E450071622F /* RecipeViewController.xib */,
 			);
 			name = RecipeViewController;
+			sourceTree = "<group>";
+		};
+		EDDA882318AB501B0071622F /* AddNewDishViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA882918AB726B0071622F /* TextViewCell */,
+				EDDA882418AB50320071622F /* AddNewDishViewController.h */,
+				EDDA882518AB50320071622F /* AddNewDishViewController.m */,
+				EDDA882618AB50320071622F /* AddNewDishViewController.xib */,
+			);
+			name = AddNewDishViewController;
+			sourceTree = "<group>";
+		};
+		EDDA882918AB726B0071622F /* TextViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EDDA882A18AB728A0071622F /* TextViewCell.h */,
+				EDDA882B18AB728A0071622F /* TextViewCell.m */,
+			);
+			name = TextViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +449,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDDA87C918A9314F0071622F /* FrontViewController.xib in Resources */,
+				EDDA882818AB50320071622F /* AddNewDishViewController.xib in Resources */,
+				EDDA883518AC99180071622F /* upload.png in Resources */,
 				EDDA879118A9300D0071622F /* InfoPlist.strings in Resources */,
 				EDDA87DA18A938850071622F /* spanner.png in Resources */,
 				EDDA881618AA08BF0071622F /* food_items in Resources */,
@@ -421,6 +458,7 @@
 				EDDA87F018A940E10071622F /* SettingsViewController.xib in Resources */,
 				EDDA87D618A937EB0071622F /* new.png in Resources */,
 				EDDA87E618A940CB0071622F /* CategoriesViewController.xib in Resources */,
+				ED5407B418ACAFB6001277A7 /* submit.png in Resources */,
 				EDDA87DC18A938910071622F /* star.png in Resources */,
 				EDDA882218AA2E450071622F /* RecipeViewController.xib in Resources */,
 				EDDA87D218A937B10071622F /* home.png in Resources */,
@@ -459,6 +497,8 @@
 				EDDA87C218A931130071622F /* RearViewController.m in Sources */,
 				EDDA882118AA2E450071622F /* RecipeViewController.m in Sources */,
 				EDDA87EA18A940D60071622F /* NewViewController.m in Sources */,
+				EDDA882718AB50320071622F /* AddNewDishViewController.m in Sources */,
+				EDDA882C18AB728A0071622F /* TextViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
