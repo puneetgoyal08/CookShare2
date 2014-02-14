@@ -10,4 +10,5 @@
 
 @interface AddNewDishViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
+@property (nonatomic, strong) UIManagedDocument *document;
 @end

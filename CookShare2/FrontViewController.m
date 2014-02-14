@@ -29,6 +29,7 @@
 #import "RecipeCollectionViewCell.h"
 #import "RecipeViewController.h"
 #import "AddNewDishViewController.h"
+#import "CoreDataHelper.h"
 
 @interface FrontViewController()
 
@@ -57,20 +58,43 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewDish:)];
     
     [self.collectionView registerClass:[RecipeCollectionViewCell class] forCellWithReuseIdentifier:@"recipeIcon"];
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if(!self.document)
+    {
+        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        url = [url URLByAppendingPathComponent:@"Default Photo Database"];
+        self.document = [[UIManagedDocument alloc] initWithFileURL:url];
+        [CoreDataHelper openDocument:self.document usingBlock:^(UIManagedDocument *document){
+            self.document = document;
+            [self setupFetchedResultsController];
+        }];
+    }
+}
+
+- (void)setupFetchedResultsController
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Dish"];
+    request.sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES], nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.document.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
 
 - (IBAction)addNewDish:(id)sender
 {
-    [[self navigationController]pushViewController:[[AddNewDishViewController alloc] init] animated:YES];
+    AddNewDishViewController *addNewDishVC = [[AddNewDishViewController alloc] init];
+    addNewDishVC.document = self.document;
+    [[self navigationController] pushViewController:addNewDishVC animated:YES];
 }
 
 #pragma mark - UICollectionView Methods
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSArray *photoArray = [[NSBundle mainBundle] pathsForResourcesOfType:@".jpg" inDirectory:@"food_items"];
-    return  photoArray.count;
+    NSInteger count = [[self.fetchedResultsController fetchedObjects] count];
+    return count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -93,6 +117,7 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     RecipeViewController *recipeVC = [[RecipeViewController alloc] initWithNibName:@"RecipeViewController" bundle:nil];
+    recipeVC.dish = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     [[self navigationController] pushViewController:recipeVC animated:YES];
     //IMPLEMENT this method
 }

@@ -9,11 +9,13 @@
 #import "RecipeViewController.h"
 
 @interface RecipeViewController ()
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *recipeTableView;
 
 @end
 
 @implementation RecipeViewController
+@synthesize recipeTableView;
+@synthesize dish;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,12 +29,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    self.tableView.contentInset = UIEdgeInsetsMake(150, 0, -10, 0);
-    self.tableView.backgroundColor = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:0];
-    self.tableView.tableFooterView.hidden = YES;
+    [self.recipeTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    self.recipeTableView.contentInset = UIEdgeInsetsMake(150, 0, -10, 0);
+    self.recipeTableView.backgroundColor = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:0];
     // Do any additional setup after loading the view from its nib.
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -51,6 +53,17 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.textLabel.text = @"some random text";
+
+    if([indexPath section]==0){
+        if([indexPath row]==0){
+            NSString *abc = self.dish.title;
+            cell.textLabel.text = abc;
+            
+        }
+    }else if([indexPath section]==1){
+        if([indexPath row]==0)
+            cell.textLabel.text = self.dish.desc;
+    }
     return cell;
 }
 
@@ -85,7 +98,6 @@
             sectionView.text = @"Title";
             break;
     }
-
     return sectionView;
 }
 

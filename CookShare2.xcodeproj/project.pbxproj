@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		ED5407B418ACAFB6001277A7 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = ED5407B318ACAFB6001277A7 /* submit.png */; };
+		ED5407B718ACCE08001277A7 /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5407B618ACCE08001277A7 /* Dish.m */; };
+		ED5407BC18ACCF39001277A7 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5407BB18ACCF39001277A7 /* CoreDataHelper.m */; };
+		ED5407BF18ACD236001277A7 /* AddNewDish.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5407BE18ACD236001277A7 /* AddNewDish.m */; };
+		ED5407C318ACD339001277A7 /* Dish+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5407C218ACD339001277A7 /* Dish+Create.m */; };
+		ED5407C918ACD83F001277A7 /* CoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5407C818ACD83F001277A7 /* CoreDataCollectionViewController.m */; };
+		ED5407CC18ACDC94001277A7 /* AFMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5407CB18ACDC94001277A7 /* AFMasterViewController.m */; };
 		EDDA878518A9300D0071622F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDA878418A9300D0071622F /* Foundation.framework */; };
 		EDDA878718A9300D0071622F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDA878618A9300D0071622F /* CoreGraphics.framework */; };
 		EDDA878918A9300D0071622F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDA878818A9300D0071622F /* UIKit.framework */; };
@@ -64,6 +70,18 @@
 
 /* Begin PBXFileReference section */
 		ED5407B318ACAFB6001277A7 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
+		ED5407B518ACCE08001277A7 /* Dish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dish.h; path = "RecipeNSManagedObject Classes/Dish.h"; sourceTree = "<group>"; };
+		ED5407B618ACCE08001277A7 /* Dish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dish.m; path = "RecipeNSManagedObject Classes/Dish.m"; sourceTree = "<group>"; };
+		ED5407BA18ACCF39001277A7 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
+		ED5407BB18ACCF39001277A7 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		ED5407BD18ACD236001277A7 /* AddNewDish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewDish.h; sourceTree = "<group>"; };
+		ED5407BE18ACD236001277A7 /* AddNewDish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewDish.m; sourceTree = "<group>"; };
+		ED5407C118ACD339001277A7 /* Dish+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Dish+Create.h"; sourceTree = "<group>"; };
+		ED5407C218ACD339001277A7 /* Dish+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Dish+Create.m"; sourceTree = "<group>"; };
+		ED5407C718ACD83F001277A7 /* CoreDataCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataCollectionViewController.h; sourceTree = "<group>"; };
+		ED5407C818ACD83F001277A7 /* CoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCollectionViewController.m; sourceTree = "<group>"; };
+		ED5407CA18ACDC94001277A7 /* AFMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFMasterViewController.h; sourceTree = "<group>"; };
+		ED5407CB18ACDC94001277A7 /* AFMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFMasterViewController.m; sourceTree = "<group>"; };
 		EDDA878118A9300D0071622F /* CookShare2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookShare2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDDA878418A9300D0071622F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EDDA878618A9300D0071622F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -147,6 +165,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED5407B818ACCE30001277A7 /* NSManagedObject Classes */ = {
+			isa = PBXGroup;
+			children = (
+				ED5407B518ACCE08001277A7 /* Dish.h */,
+				ED5407B618ACCE08001277A7 /* Dish.m */,
+				ED5407C118ACD339001277A7 /* Dish+Create.h */,
+				ED5407C218ACD339001277A7 /* Dish+Create.m */,
+			);
+			name = "NSManagedObject Classes";
+			sourceTree = "<group>";
+		};
+		ED5407B918ACCF1E001277A7 /* CookCoreDataHelper */ = {
+			isa = PBXGroup;
+			children = (
+				ED5407CA18ACDC94001277A7 /* AFMasterViewController.h */,
+				ED5407CB18ACDC94001277A7 /* AFMasterViewController.m */,
+				ED5407BA18ACCF39001277A7 /* CoreDataHelper.h */,
+				ED5407BB18ACCF39001277A7 /* CoreDataHelper.m */,
+				ED5407BD18ACD236001277A7 /* AddNewDish.h */,
+				ED5407BE18ACD236001277A7 /* AddNewDish.m */,
+				ED5407C718ACD83F001277A7 /* CoreDataCollectionViewController.h */,
+				ED5407C818ACD83F001277A7 /* CoreDataCollectionViewController.m */,
+			);
+			name = CookCoreDataHelper;
+			sourceTree = "<group>";
+		};
 		EDDA877818A9300D0071622F = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +268,8 @@
 		EDDA87B918A9305A0071622F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				ED5407B918ACCF1E001277A7 /* CookCoreDataHelper */,
+				ED5407B818ACCE30001277A7 /* NSManagedObject Classes */,
 				EDDA87BA18A9305D0071622F /* views */,
 			);
 			name = src;
@@ -488,9 +534,15 @@
 			files = (
 				EDDA87C818A9314F0071622F /* FrontViewController.m in Sources */,
 				EDDA879718A9300D0071622F /* CSAppDelegate.m in Sources */,
+				ED5407C918ACD83F001277A7 /* CoreDataCollectionViewController.m in Sources */,
+				ED5407BF18ACD236001277A7 /* AddNewDish.m in Sources */,
 				EDDA879318A9300D0071622F /* main.m in Sources */,
+				ED5407B718ACCE08001277A7 /* Dish.m in Sources */,
 				EDDA87EF18A940E10071622F /* SettingsViewController.m in Sources */,
+				ED5407BC18ACCF39001277A7 /* CoreDataHelper.m in Sources */,
+				ED5407CC18ACDC94001277A7 /* AFMasterViewController.m in Sources */,
 				EDDA87E518A940CB0071622F /* CategoriesViewController.m in Sources */,
+				ED5407C318ACD339001277A7 /* Dish+Create.m in Sources */,
 				EDDA879A18A9300D0071622F /* CookShare2.xcdatamodeld in Sources */,
 				EDDA87F618A948F50071622F /* RecipeCollectionViewCell.m in Sources */,
 				EDDA87BD18A930650071622F /* SWRevealViewController.m in Sources */,

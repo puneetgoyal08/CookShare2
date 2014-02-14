@@ -7,14 +7,19 @@
 //
 
 #import "AddNewDishViewController.h"
+#import "AddNewDish.h"
 
 @interface AddNewDishViewController ()
-
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITextView *dishTitle;
+@property (nonatomic, strong) IBOutlet UITextView *dishDescription;
 @end
 
 @implementation AddNewDishViewController
 @synthesize tableView = _tableView;
+@synthesize document = _document;
+@synthesize dishDescription;
+@synthesize dishTitle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,7 +34,10 @@
 {
     [super viewDidLoad];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-
+    self.dishTitle = [self textViewWithTitle:@"Title of your dish"];
+    self.dishTitle.delegate = self;
+    self.dishDescription = [self textViewWithTitle:@"Description of your dish"];
+    self.dishDescription.delegate = self;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -39,12 +47,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UIView *)textViewWithTitle:(NSString *)title
+- (UITextView *)textViewWithTitle:(NSString *)titl
 {
     UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width, 40)];
     textView.textColor = [UIColor lightGrayColor];
-    textView.text = title;
-    textView.delegate = self;
+    textView.text = titl;
     return textView;
 }
 
@@ -60,13 +67,13 @@
     return iv;
 }
 
-- (UIView *)buttonWithTitle:(NSString *)title
+- (UIButton *)buttonWithTitle:(NSString *)title1
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button addTarget:self
                action:@selector(buttonTapped:)
      forControlEvents:UIControlEventTouchDown];
-    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitle:title1 forState:UIControlStateNormal];
     button.frame = CGRectMake(10, 7, 160.0, 30);
     return button;
 }
@@ -87,8 +94,16 @@
         if([sender.titleLabel.text isEqualToString:@"Upload"])
             NSLog(@"upload tapped");
         else if([sender.titleLabel.text isEqualToString:@"Submit"])
-            NSLog(@"submit tapped");
+            [self submitInfo];
     }
+}
+
+- (void)submitInfo
+{
+    if([self.dishTitle.text isEqualToString:@""]|| [self.dishDescription.text isEqualToString:@""])
+        NSLog(@"both fields are empty");
+    else
+        [AddNewDish addDishWithTitle:self.dishTitle.text withDescription:self.dishDescription.text inDocument:self.document];
 }
 
 #pragma mark - Table View Methods
@@ -106,10 +121,10 @@
 
     switch (indexPath.row) {
         case 0:
-            [cell.contentView addSubview:[self textViewWithTitle:@"Title of your dish"]];
+            [cell.contentView addSubview:self.dishTitle];
             break;
         case 1:
-            [cell.contentView addSubview:[self textViewWithTitle:@"Description of your dish"]];
+            [cell.contentView addSubview:self.dishDescription];
             break;
         case 2:
             [cell.contentView addSubview:[self buttonWithTitle:@"Upload"]];

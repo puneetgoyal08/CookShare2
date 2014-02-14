@@ -25,7 +25,9 @@
 */
 
 #import <UIKit/UIKit.h>
+#import "AFMasterViewController.h"
 
-@interface FrontViewController : UICollectionViewController<UICollectionViewDelegateFlowLayout>
+@interface FrontViewController : AFMasterViewController<UICollectionViewDelegateFlowLayout>
+@property (nonatomic, strong) UIManagedDocument *document;
 
 @end

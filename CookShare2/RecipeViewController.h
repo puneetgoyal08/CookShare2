@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Dish.h"
 
 @interface RecipeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-
+@property (nonatomic, strong) Dish *dish;
 @end

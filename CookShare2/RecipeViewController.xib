@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecipeViewController">
             <connections>
-                <outlet property="tableView" destination="8OC-zr-tqv" id="jkF-BQ-M2o"/>
+                <outlet property="recipeTableView" destination="8OC-zr-tqv" id="q7i-FB-yMd"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
