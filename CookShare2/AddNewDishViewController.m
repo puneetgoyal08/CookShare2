@@ -8,6 +8,7 @@
 
 #import "AddNewDishViewController.h"
 #import "AddNewDish.h"
+#import "API.h"
 
 @interface AddNewDishViewController ()
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
@@ -103,7 +104,12 @@
     if([self.dishTitle.text isEqualToString:@""]|| [self.dishDescription.text isEqualToString:@""])
         NSLog(@"both fields are empty");
     else{
-        [AddNewDish addDishWithTitle:self.dishTitle.text withDescription:self.dishDescription.text inDocument:self.document];
+        NSArray *photoArray = [[NSBundle mainBundle] pathsForResourcesOfType:@".jpg" inDirectory:@"food_items"];
+        int numOfPhotos = [[[API sharedInstance] numberOfPhotos] integerValue];
+        NSString *path = [photoArray objectAtIndex:numOfPhotos];
+        UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:path]];
+        [AddNewDish addDishWithTitle:self.dishTitle.text withDescription:self.dishDescription.text withImage:iv inDocument:self.document];
+        [[API sharedInstance] setNumberOfPhotos:[NSNumber numberWithInteger:numOfPhotos + 1]];
         [[self navigationController] popViewControllerAnimated:YES];
     }
 }

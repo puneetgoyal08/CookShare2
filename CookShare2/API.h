@@ -16,6 +16,7 @@ typedef void (^connectionResponseBlock)(NSURLResponse *response, NSData *data, N
 
 @property (strong, nonatomic) NSDictionary* user;
 @property (strong, nonatomic) NSOperationQueue* queue;
+@property (strong, nonatomic) NSNumber* numberOfPhotos;
 
 +(API*)sharedInstance;
 //check whether there's an authorized user

@@ -26,6 +26,7 @@
     dispatch_once(&oncePredicate, ^{
         sharedInstance = [[self alloc] init];
         sharedInstance.queue = [[NSOperationQueue alloc] init];
+        sharedInstance.numberOfPhotos = [[NSNumber alloc] initWithInt:0];
     });
     
     return sharedInstance;
@@ -47,36 +48,18 @@
 }
 
 -(void)commandWithParams:(NSMutableDictionary*)params onCompletion:(connectionResponseBlock)completionBlock {
-	NSData* uploadFile = nil;
-	if ([params objectForKey:@"file"]) {
-		uploadFile = (NSData*)[params objectForKey:@"file"];
-		[params removeObjectForKey:@"file"];
-	}
-    NSURL *url = [NSURL URLWithString:@"http://dcetech.com/puneet/iReporter/index.php"];
-    
-    //initialize a request from url
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[url standardizedURL]];
-    
-    [request setHTTPMethod:@"POST"];
-    
-    [request setValue:@"application/xml; charset=urf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    NSString *stringData = [[NSString alloc] initWithString:[NSString stringWithFormat:@"command=%@&username=%@&password=%@", [params objectForKey:@"command"], [params objectForKey:@"username"], [params objectForKey:@"password"]]];
-    NSData *requestBodyData = [stringData dataUsingEncoding:NSUTF8StringEncoding];
-    request.HTTPBody = requestBodyData;
     NSMutableURLRequest *request2 = [self setData:params];
     //NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request2 delegate:self];
     [NSURLConnection sendAsynchronousRequest:request2 queue:self.queue completionHandler:completionBlock];
-    
     //start the connection
     //  [connection start];
-    
 }
 
 -(NSMutableURLRequest *)setData: (NSMutableDictionary *)params{
     NSData *imageData = nil;
     if ([params objectForKey:@"file"]) {
-		imageData = (NSData*)[params objectForKey:@"file"];
+        UIImage *img = [params objectForKey:@"file"];
+        imageData = UIImageJPEGRepresentation(img, 0.1);
 		[params removeObjectForKey:@"file"];
 	}
 
@@ -89,19 +72,14 @@
     [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
     
     NSMutableData *body = [NSMutableData data];
-    
-    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"command\"\r\n\r\n%@", [params objectForKey:@"command"]] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"username\"\r\n\r\n%@", [params objectForKey:@"username"]] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"password\"\r\n\r\n%@", [params objectForKey:@"password"]] dataUsingEncoding:NSUTF8StringEncoding]];
-    
+    for(NSString *key in params){
+        [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n%@", key,[params objectForKey:key]] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+
     if (imageData) {
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", @"photo.jpg"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; filename=\"photo.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
         [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
         [body appendData:imageData];
         [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];

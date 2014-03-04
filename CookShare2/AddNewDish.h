@@ -10,6 +10,6 @@
 
 @interface AddNewDish : NSObject
 
-+ (void)addDishWithTitle:(NSString *)title withDescription:(NSString *)desc inDocument:(UIManagedDocument *)document;
++ (void)addDishWithTitle:(NSString *)title withDescription:(NSString *)desc withImage:(UIImageView *)photo inDocument:(UIManagedDocument *)document;
 
 @end
