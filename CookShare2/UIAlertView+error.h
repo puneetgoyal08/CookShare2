@@ -1,9 +1,9 @@
 //
 //  UIAlertView+error.h
-//  iReporter
+//  CookShare2
 //
-//  Created by Marin Todorov on 09/02/2012.
-//  Copyright (c) 2012 Marin Todorov. All rights reserved.
+//  Created by Puneet Goyal on 21/02/14.
+//  Copyright (c) 2014 Puneet Goyal. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

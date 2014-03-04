@@ -1,9 +1,9 @@
 //
 //  API.h
-//  iReporter
+//  CookShare2
 //
-//  Created by Fahim Farook on 9/6/12.
-//  Copyright (c) 2012 Marin Todorov. All rights reserved.
+//  Created by Puneet Goyal on 21/02/14.
+//  Copyright (c) 2014 Puneet Goyal. All rights reserved.
 //
 
 

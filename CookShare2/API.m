@@ -1,9 +1,9 @@
 //
 //  API.m
-//  iReporter
+//  CookShare2
 //
-//  Created by Fahim Farook on 9/6/12.
-//  Copyright (c) 2012 Marin Todorov. All rights reserved.
+//  Created by Puneet Goyal on 21/02/14.
+//  Copyright (c) 2014 Puneet Goyal. All rights reserved.
 //
 
 #import "API.h"
@@ -45,29 +45,6 @@
 -(BOOL)isAuthorized {
     return [[user objectForKey:@"IdUser"] intValue]>0;
 }
-
-//-(void)commandWithParams:(NSMutableDictionary*)params onCompletion:(JSONResponseBlock)completionBlock {
-//	NSData* uploadFile = nil;
-//	if ([params objectForKey:@"file"]) {
-//		uploadFile = (NSData*)[params objectForKey:@"file"];
-//		[params removeObjectForKey:@"file"];
-//	}
-//
-//    NSMutableURLRequest *apiRequest = [self multipartFormRequestWithMethod:@"POST" path:kAPIPath parameters:params constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
-//		if (uploadFile) {
-//			[formData appendPartWithFileData:uploadFile name:@"file" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
-//		}
-//	}];
-//    AFJSONRequestOperation* operation = [[AFJSONRequestOperation alloc] initWithRequest: apiRequest];
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        //success!
-//        completionBlock(responseObject);
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        //failure :(
-//        completionBlock([NSDictionary dictionaryWithObject:[error localizedDescription] forKey:@"error"]);
-//    }];
-//    [operation start];
-//}
 
 -(void)commandWithParams:(NSMutableDictionary*)params onCompletion:(connectionResponseBlock)completionBlock {
 	NSData* uploadFile = nil;
