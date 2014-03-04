@@ -30,6 +30,8 @@
 #import "RecipeViewController.h"
 #import "AddNewDishViewController.h"
 #import "CoreDataHelper.h"
+#import "API.h"
+#import "LoginScreen.h"
 
 @interface FrontViewController()
 
@@ -84,9 +86,17 @@
 
 - (IBAction)addNewDish:(id)sender
 {
-    AddNewDishViewController *addNewDishVC = [[AddNewDishViewController alloc] init];
-    addNewDishVC.document = self.document;
-    [[self navigationController] pushViewController:addNewDishVC animated:YES];
+    if(![[API sharedInstance] isAuthorized])
+    {
+        LoginScreen *loginScreen = [[LoginScreen alloc] initWithNibName:@"LoginScreen" bundle:nil];
+        [self presentViewController:loginScreen animated:NO completion:nil];
+    }
+    if([[API sharedInstance] isAuthorized])
+    {
+        AddNewDishViewController *addNewDishVC = [[AddNewDishViewController alloc] init];
+        addNewDishVC.document = self.document;
+        [[self navigationController] pushViewController:addNewDishVC animated:YES];
+    }
 }
 
 #pragma mark - UICollectionView Methods
@@ -127,28 +137,5 @@
     return CGSizeMake(150, 150);
 }
 
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated];
-//    NSLog( @"%@: FRONT", NSStringFromSelector(_cmd));
-//}
-//
-//- (void)viewWillDisappear:(BOOL)animated
-//{
-//    [super viewWillDisappear:animated];
-//    NSLog( @"%@: FRONT", NSStringFromSelector(_cmd));
-//}
-//
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//    NSLog( @"%@: FRONT", NSStringFromSelector(_cmd));
-//}
-//
-//- (void)viewDidDisappear:(BOOL)animated
-//{
-//    [super viewDidDisappear:animated];
-//    NSLog( @"%@: FRONT", NSStringFromSelector(_cmd));
-//}
 
 @end

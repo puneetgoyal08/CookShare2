@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED32996018B75302001F683B /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = ED32995F18B75302001F683B /* API.m */; };
+		ED32996818B753D1001F683B /* UIAlertView+error.m in Sources */ = {isa = PBXBuildFile; fileRef = ED32996718B753D1001F683B /* UIAlertView+error.m */; };
+		ED32996F18B75553001F683B /* LoginScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = ED32996D18B75553001F683B /* LoginScreen.m */; };
+		ED32997018B75553001F683B /* LoginScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED32996E18B75553001F683B /* LoginScreen.xib */; };
+		ED35F86F18B9FB9100500419 /* man.png in Resources */ = {isa = PBXBuildFile; fileRef = ED35F86E18B9FB9100500419 /* man.png */; };
+		ED35F89118BA002E00500419 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED35F89018BA002E00500419 /* Security.framework */; };
+		ED35F89318BA003700500419 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED35F89218BA003700500419 /* CFNetwork.framework */; };
+		ED35F89518BA004600500419 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED35F89418BA004600500419 /* CoreImage.framework */; };
 		ED5407B418ACAFB6001277A7 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = ED5407B318ACAFB6001277A7 /* submit.png */; };
 		ED5407B718ACCE08001277A7 /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5407B618ACCE08001277A7 /* Dish.m */; };
 		ED5407BC18ACCF39001277A7 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5407BB18ACCF39001277A7 /* CoreDataHelper.m */; };
@@ -69,6 +77,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED32995E18B75302001F683B /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
+		ED32995F18B75302001F683B /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
+		ED32996618B753D1001F683B /* UIAlertView+error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+error.h"; sourceTree = "<group>"; };
+		ED32996718B753D1001F683B /* UIAlertView+error.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+error.m"; sourceTree = "<group>"; };
+		ED32996C18B75553001F683B /* LoginScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginScreen.h; sourceTree = "<group>"; };
+		ED32996D18B75553001F683B /* LoginScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginScreen.m; sourceTree = "<group>"; };
+		ED32996E18B75553001F683B /* LoginScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginScreen.xib; sourceTree = "<group>"; };
+		ED35F86E18B9FB9100500419 /* man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = man.png; sourceTree = "<group>"; };
+		ED35F89018BA002E00500419 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		ED35F89218BA003700500419 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		ED35F89418BA004600500419 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		ED5407B318ACAFB6001277A7 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
 		ED5407B518ACCE08001277A7 /* Dish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dish.h; path = "RecipeNSManagedObject Classes/Dish.h"; sourceTree = "<group>"; };
 		ED5407B618ACCE08001277A7 /* Dish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dish.m; path = "RecipeNSManagedObject Classes/Dish.m"; sourceTree = "<group>"; };
@@ -144,6 +163,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED35F89518BA004600500419 /* CoreImage.framework in Frameworks */,
+				ED35F89318BA003700500419 /* CFNetwork.framework in Frameworks */,
+				ED35F89118BA002E00500419 /* Security.framework in Frameworks */,
 				EDDA878718A9300D0071622F /* CoreGraphics.framework in Frameworks */,
 				EDDA878B18A9300D0071622F /* CoreData.framework in Frameworks */,
 				EDDA878918A9300D0071622F /* UIKit.framework in Frameworks */,
@@ -165,6 +187,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED32995D18B752E6001F683B /* Networking Files */ = {
+			isa = PBXGroup;
+			children = (
+				ED32995E18B75302001F683B /* API.h */,
+				ED32995F18B75302001F683B /* API.m */,
+			);
+			name = "Networking Files";
+			sourceTree = "<group>";
+		};
+		ED32996518B753C6001F683B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				ED32996618B753D1001F683B /* UIAlertView+error.h */,
+				ED32996718B753D1001F683B /* UIAlertView+error.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		ED32996B18B75535001F683B /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				ED32996C18B75553001F683B /* LoginScreen.h */,
+				ED32996D18B75553001F683B /* LoginScreen.m */,
+				ED32996E18B75553001F683B /* LoginScreen.xib */,
+			);
+			name = LoginScreen;
+			sourceTree = "<group>";
+		};
 		ED5407B818ACCE30001277A7 /* NSManagedObject Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +263,9 @@
 		EDDA878318A9300D0071622F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ED35F89418BA004600500419 /* CoreImage.framework */,
+				ED35F89218BA003700500419 /* CFNetwork.framework */,
+				ED35F89018BA002E00500419 /* Security.framework */,
 				EDDA878418A9300D0071622F /* Foundation.framework */,
 				EDDA878618A9300D0071622F /* CoreGraphics.framework */,
 				EDDA878818A9300D0071622F /* UIKit.framework */,
@@ -268,6 +321,8 @@
 		EDDA87B918A9305A0071622F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				ED32996518B753C6001F683B /* Categories */,
+				ED32995D18B752E6001F683B /* Networking Files */,
 				ED5407B918ACCF1E001277A7 /* CookCoreDataHelper */,
 				ED5407B818ACCE30001277A7 /* NSManagedObject Classes */,
 				EDDA87BA18A9305D0071622F /* views */,
@@ -278,6 +333,7 @@
 		EDDA87BA18A9305D0071622F /* views */ = {
 			isa = PBXGroup;
 			children = (
+				ED32996B18B75535001F683B /* LoginScreen */,
 				EDDA882318AB501B0071622F /* AddNewDishViewController */,
 				EDDA881D18AA2E2B0071622F /* RecipeViewController */,
 				EDDA87E118A940890071622F /* SettingsViewController */,
@@ -334,6 +390,7 @@
 			children = (
 				EDDA87D118A937B10071622F /* home.png */,
 				EDDA87CB18A933310071622F /* reveal-icon.png */,
+				ED35F86E18B9FB9100500419 /* man.png */,
 				EDDA883418AC99180071622F /* upload.png */,
 				EDDA87CC18A933310071622F /* reveal-icon@2x.png */,
 				EDDA87D318A937D00071622F /* gear.png */,
@@ -496,6 +553,7 @@
 			files = (
 				EDDA87C918A9314F0071622F /* FrontViewController.xib in Resources */,
 				EDDA882818AB50320071622F /* AddNewDishViewController.xib in Resources */,
+				ED35F86F18B9FB9100500419 /* man.png in Resources */,
 				EDDA883518AC99180071622F /* upload.png in Resources */,
 				EDDA879118A9300D0071622F /* InfoPlist.strings in Resources */,
 				EDDA87DA18A938850071622F /* spanner.png in Resources */,
@@ -514,6 +572,7 @@
 				EDDA87EB18A940D60071622F /* NewViewController.xib in Resources */,
 				EDDA87D818A938420071622F /* flower.png in Resources */,
 				EDDA87CD18A933310071622F /* reveal-icon.png in Resources */,
+				ED32997018B75553001F683B /* LoginScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +592,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDDA87C818A9314F0071622F /* FrontViewController.m in Sources */,
+				ED32996F18B75553001F683B /* LoginScreen.m in Sources */,
 				EDDA879718A9300D0071622F /* CSAppDelegate.m in Sources */,
 				ED5407C918ACD83F001277A7 /* CoreDataCollectionViewController.m in Sources */,
 				ED5407BF18ACD236001277A7 /* AddNewDish.m in Sources */,
@@ -540,12 +600,14 @@
 				ED5407B718ACCE08001277A7 /* Dish.m in Sources */,
 				EDDA87EF18A940E10071622F /* SettingsViewController.m in Sources */,
 				ED5407BC18ACCF39001277A7 /* CoreDataHelper.m in Sources */,
+				ED32996818B753D1001F683B /* UIAlertView+error.m in Sources */,
 				ED5407CC18ACDC94001277A7 /* AFMasterViewController.m in Sources */,
 				EDDA87E518A940CB0071622F /* CategoriesViewController.m in Sources */,
 				ED5407C318ACD339001277A7 /* Dish+Create.m in Sources */,
 				EDDA879A18A9300D0071622F /* CookShare2.xcdatamodeld in Sources */,
 				EDDA87F618A948F50071622F /* RecipeCollectionViewCell.m in Sources */,
 				EDDA87BD18A930650071622F /* SWRevealViewController.m in Sources */,
+				ED32996018B75302001F683B /* API.m in Sources */,
 				EDDA87C218A931130071622F /* RearViewController.m in Sources */,
 				EDDA882118AA2E450071622F /* RecipeViewController.m in Sources */,
 				EDDA87EA18A940D60071622F /* NewViewController.m in Sources */,
@@ -596,7 +658,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -609,7 +671,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Puneet Goyal (H29T42J8J6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Puneet Goyal (H29T42J8J6)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -625,8 +688,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "B43F1764-BB4B-46CD-8336-98F572B99AA4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -636,7 +700,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -649,7 +713,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Puneet Goyal (H29T42J8J6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Puneet Goyal (H29T42J8J6)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -659,7 +724,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "B43F1764-BB4B-46CD-8336-98F572B99AA4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

@@ -33,6 +33,7 @@
 #import "CategoriesViewController.h"
 #import "NewViewController.h"
 #import "SettingsViewController.h"
+#import "LoginScreen.h"
 
 @interface RearViewController()
 
@@ -108,6 +109,15 @@
         [cell.contentView addSubview:iv];
         [cell.contentView addSubview:cellName];
 	}
+    else if (row==4)
+    {
+        UILabel *cellName = [[UILabel alloc] initWithFrame:CGRectMake(50, cell.frame.origin.y, cell.frame.size.width-50, cell.frame.size.height)];
+        cellName.text = @"Login";
+        UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(3, 5, 30, 30)];
+        iv.image = [UIImage imageNamed:@"man.png"];;
+        [cell.contentView addSubview:iv];
+        [cell.contentView addSubview:cellName];
+    }
 	
 	return cell;
 }
@@ -178,6 +188,18 @@
 			[revealController revealToggle:self];
 		}
 	}
+    else if (row == 4)
+    {
+        if( ![frontNavigationController.topViewController isKindOfClass:[LoginScreen class]])
+        {
+            LoginScreen *loginScreen = [[LoginScreen alloc] initWithNibName:@"LoginScreen" bundle:nil];
+            [revealController setFrontViewController:[[UINavigationController alloc] initWithRootViewController:loginScreen] animated:YES];
+        }
+        else
+        {
+            [revealController revealToggle:self];
+        }
+    }
 }
 
 

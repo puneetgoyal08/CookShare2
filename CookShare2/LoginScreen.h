@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginScreen : UIViewController
+{
+    //the login form fields
+    IBOutlet UITextField* fldUsername;
+    IBOutlet UITextField* fldPassword;
+}
+
+//action for when either button is pressed
+-(IBAction)btnLoginRegisterTapped:(id)sender;
 
 @end

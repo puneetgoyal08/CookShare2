@@ -102,8 +102,10 @@
 {
     if([self.dishTitle.text isEqualToString:@""]|| [self.dishDescription.text isEqualToString:@""])
         NSLog(@"both fields are empty");
-    else
+    else{
         [AddNewDish addDishWithTitle:self.dishTitle.text withDescription:self.dishDescription.text inDocument:self.document];
+        [[self navigationController] popViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - Table View Methods
