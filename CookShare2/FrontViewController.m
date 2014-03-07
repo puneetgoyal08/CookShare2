@@ -14,15 +14,22 @@
 #import "CoreDataHelper.h"
 #import "API.h"
 #import "LoginScreen.h"
+#import "PhotoView.h"
+#import "CacheFileManager.h"
 
-@interface FrontViewController()
+@interface FrontViewController() <PhotoViewDelegate>
+
+@property (nonatomic, strong) NSArray *stream;
+@property (nonatomic, strong) NSOperationQueue *queue;
 
 @end
 
 @implementation FrontViewController
 
-#pragma mark - View lifecycle
+@synthesize stream = _stream;
+@synthesize queue = _queue;
 
+#pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
@@ -42,28 +49,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewDish:)];
     
     [self.collectionView registerClass:[RecipeCollectionViewCell class] forCellWithReuseIdentifier:@"recipeIcon"];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    if(!self.document)
-    {
-        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-        url = [url URLByAppendingPathComponent:@"Default Photo Database"];
-        self.document = [[UIManagedDocument alloc] initWithFileURL:url];
-        [CoreDataHelper openDocument:self.document usingBlock:^(UIManagedDocument *document){
-            self.document = document;
-            [self setupFetchedResultsController];
-        }];
-    }
-}
-
-- (void)setupFetchedResultsController
-{
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Dish"];
-    request.sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES], nil];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.document.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    [self refreshStream];
 }
 
 - (IBAction)addNewDish:(id)sender
@@ -81,42 +67,97 @@
     }
 }
 
+-(void)refreshStream {
+    UIActivityIndicatorView *refreshIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    refreshIndicator.frame = CGRectMake(150, 150, 50, 50);
+    [refreshIndicator startAnimating];
+    [self.view addSubview:refreshIndicator];
+    [[API sharedInstance] commandWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"stream", @"command", nil] onCompletion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSError *error = nil;
+        NSDictionary *json = data ? [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error] : nil;
+        [self setStream:[json objectForKey:@"result"]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [refreshIndicator removeFromSuperview];
+            [self.collectionView reloadData];
+        });
+    }];
+}
+
 #pragma mark - UICollectionView Methods
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSInteger count = [[self.fetchedResultsController fetchedObjects] count];
+    NSInteger count = self.stream.count;
     return count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     RecipeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"recipeIcon" forIndexPath:indexPath];
-    for(UIView *view in cell.subviews)
+    for(UIView *view in cell.contentView.subviews)
         [view removeFromSuperview];
-    NSArray *photoArray = [[NSBundle mainBundle] pathsForResourcesOfType:@".jpg" inDirectory:@"food_items"];
-    NSString *path = [photoArray objectAtIndex:indexPath.row];
-    UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:path]];
-    iv.frame = CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height);
-    iv.contentMode = UIViewContentModeScaleAspectFit;
-//    UIImage *pic = [UIImage imageWithContentsOfFile:path];
-//    pic.
-//    cell.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageWithContentsOfFile:path]];
-    [cell addSubview:iv];
+//    UIActivityIndicatorView *refreshIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+//    [refreshIndicator startAnimating];
+//    [cell.contentView addSubview:refreshIndicator];
+    if(!self.queue){
+        self.queue = [[NSOperationQueue alloc] init];
+        self.queue.maxConcurrentOperationCount = 1;
+    }
+    
+    PhotoView *pView = [[PhotoView alloc] initWithIndex:indexPath.row andData:[self.stream objectAtIndex:indexPath.row]];
+    [cell.contentView addSubview:pView];
+
+//    dispatch_queue_t downloadQueue = dispatch_queue_create("photo download", NULL);
+//    dispatch_async(downloadQueue, ^{
+//        PhotoView *pView = [[PhotoView alloc] initWithIndex:indexPath.row andData:[self.stream objectAtIndex:indexPath.row]];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+////            for(UIView *view in cell.contentView.subviews)
+////                [view removeFromSuperview];
+//            [cell.contentView addSubview:pView];
+//            [collectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+//        });
+//    });
+
+//    [self.queue addOperationWithBlock:^{
+//        API* api = [API sharedInstance];
+//		int IdPhoto = [[[self.stream objectAtIndex:indexPath.row] objectForKey:@"IdPhoto"] intValue];
+//		NSURL* imageURL = [api urlForImageWithId:[NSNumber numberWithInt: IdPhoto] isThumb:YES];
+//        NSData* imageData = [CacheFileManager getFileAtUrl:imageURL];
+//        UIImageView* thumbView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:imageData]];
+//        thumbView.contentMode = UIViewContentModeScaleToFill;
+//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//            for(UIView *view in cell.subviews)
+//                [view removeFromSuperview];
+//            [cell.contentView addSubview:thumbView];
+//        }];
+
+//        PhotoView *pView = [[PhotoView alloc] initWithIndex:indexPath.row andData:[self.stream objectAtIndex:indexPath.row]];
+//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//            for(UIView *view in cell.subviews)
+//                [view removeFromSuperview];
+//            [cell addSubview:pView];
+//        }];
+//    }];
     return cell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     RecipeViewController *recipeVC = [[RecipeViewController alloc] initWithNibName:@"RecipeViewController" bundle:nil];
-    recipeVC.dish = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     [[self navigationController] pushViewController:recipeVC animated:YES];
-    //IMPLEMENT this method
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return CGSizeMake(150, 150);
+}
+
+#pragma mark - PhotoViewDelegate
+
+-(void)didSelectPhoto:(id)sender
+{
+    PhotoView *view = (PhotoView *)sender;
+    NSLog(@"photo got selected");
 }
 
 

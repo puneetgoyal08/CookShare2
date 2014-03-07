@@ -27,28 +27,6 @@
     return dirURL;
 }
 
-//+(void)openDocument:(NSString *)documentName usingBlock:(IteratorBlock)iteratorBlock
-//{
-//    NSURL *docURL =[[self documentURL] URLByAppendingPathComponent:documentName];
-//    UIManagedDocument *document = [[UIManagedDocument alloc] initWithFileURL:docURL];
-//    if(![[NSFileManager defaultManager] fileExistsAtPath:[docURL path]]) {
-//        [document saveToURL:[[self documentURL] URLByAppendingPathComponent:documentName] forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-//            iteratorBlock(document);
-//        }];
-//    }
-//    else if ([document documentState]==UIDocumentStateClosed) {
-//        [document openWithCompletionHandler:^(BOOL success) {
-//            if(!success)
-//                NSLog(@"opening document with completion handler not successful");
-//            iteratorBlock(document);
-//        }];
-//    } else if ([document documentState]==UIDocumentStateNormal) {
-//            iteratorBlock(document);
-//        //document is already opened
-//    }
-//
-//}
-
 + (void)openDocument:(UIManagedDocument *)document usingBlock:(IteratorBlock)iteratorBlock
 {
     if(![[NSFileManager defaultManager] fileExistsAtPath:[[document fileURL] path]]) {

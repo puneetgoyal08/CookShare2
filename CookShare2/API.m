@@ -118,8 +118,4 @@
     return nil;
 }
 
--(void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    
-}
 @end

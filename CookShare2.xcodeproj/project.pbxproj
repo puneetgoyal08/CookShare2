@@ -22,6 +22,7 @@
 		ED5407C318ACD339001277A7 /* Dish+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5407C218ACD339001277A7 /* Dish+Create.m */; };
 		ED5407C918ACD83F001277A7 /* CoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5407C818ACD83F001277A7 /* CoreDataCollectionViewController.m */; };
 		ED5407CC18ACDC94001277A7 /* AFMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5407CB18ACDC94001277A7 /* AFMasterViewController.m */; };
+		ED740A8918C84FE600146473 /* CacheFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED740A8818C84FE600146473 /* CacheFileManager.m */; };
 		EDDA878518A9300D0071622F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDA878418A9300D0071622F /* Foundation.framework */; };
 		EDDA878718A9300D0071622F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDA878618A9300D0071622F /* CoreGraphics.framework */; };
 		EDDA878918A9300D0071622F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDA878818A9300D0071622F /* UIKit.framework */; };
@@ -64,6 +65,7 @@
 		EDDA882818AB50320071622F /* AddNewDishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDA882618AB50320071622F /* AddNewDishViewController.xib */; };
 		EDDA882C18AB728A0071622F /* TextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDA882B18AB728A0071622F /* TextViewCell.m */; };
 		EDDA883518AC99180071622F /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = EDDA883418AC99180071622F /* upload.png */; };
+		EDF5894318C5F02C0005FE26 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF5894218C5F02C0005FE26 /* PhotoView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,8 @@
 		ED5407C818ACD83F001277A7 /* CoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCollectionViewController.m; sourceTree = "<group>"; };
 		ED5407CA18ACDC94001277A7 /* AFMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFMasterViewController.h; sourceTree = "<group>"; };
 		ED5407CB18ACDC94001277A7 /* AFMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFMasterViewController.m; sourceTree = "<group>"; };
+		ED740A8718C84FE600146473 /* CacheFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheFileManager.h; sourceTree = "<group>"; };
+		ED740A8818C84FE600146473 /* CacheFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheFileManager.m; sourceTree = "<group>"; };
 		EDDA878118A9300D0071622F /* CookShare2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookShare2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDDA878418A9300D0071622F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EDDA878618A9300D0071622F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -156,6 +160,8 @@
 		EDDA882A18AB728A0071622F /* TextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewCell.h; sourceTree = "<group>"; };
 		EDDA882B18AB728A0071622F /* TextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewCell.m; sourceTree = "<group>"; };
 		EDDA883418AC99180071622F /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
+		EDF5894118C5F02C0005FE26 /* PhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoView.h; sourceTree = "<group>"; };
+		EDF5894218C5F02C0005FE26 /* PhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +247,15 @@
 			name = CookCoreDataHelper;
 			sourceTree = "<group>";
 		};
+		ED740A8618C84FD900146473 /* CacheFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				ED740A8718C84FE600146473 /* CacheFileManager.h */,
+				ED740A8818C84FE600146473 /* CacheFileManager.m */,
+			);
+			name = CacheFileManager;
+			sourceTree = "<group>";
+		};
 		EDDA877818A9300D0071622F = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +336,7 @@
 		EDDA87B918A9305A0071622F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				ED740A8618C84FD900146473 /* CacheFileManager */,
 				ED32996518B753C6001F683B /* Categories */,
 				ED32995D18B752E6001F683B /* Networking Files */,
 				ED5407B918ACCF1E001277A7 /* CookCoreDataHelper */,
@@ -372,6 +388,8 @@
 				EDDA87C518A9314F0071622F /* FrontViewController.h */,
 				EDDA87C618A9314F0071622F /* FrontViewController.m */,
 				EDDA87C718A9314F0071622F /* FrontViewController.xib */,
+				EDF5894118C5F02C0005FE26 /* PhotoView.h */,
+				EDF5894218C5F02C0005FE26 /* PhotoView.m */,
 			);
 			name = FrontViewController;
 			sourceTree = "<group>";
@@ -592,6 +610,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDDA87C818A9314F0071622F /* FrontViewController.m in Sources */,
+				EDF5894318C5F02C0005FE26 /* PhotoView.m in Sources */,
 				ED32996F18B75553001F683B /* LoginScreen.m in Sources */,
 				EDDA879718A9300D0071622F /* CSAppDelegate.m in Sources */,
 				ED5407C918ACD83F001277A7 /* CoreDataCollectionViewController.m in Sources */,
@@ -600,6 +619,7 @@
 				ED5407B718ACCE08001277A7 /* Dish.m in Sources */,
 				EDDA87EF18A940E10071622F /* SettingsViewController.m in Sources */,
 				ED5407BC18ACCF39001277A7 /* CoreDataHelper.m in Sources */,
+				ED740A8918C84FE600146473 /* CacheFileManager.m in Sources */,
 				ED32996818B753D1001F683B /* UIAlertView+error.m in Sources */,
 				ED5407CC18ACDC94001277A7 /* AFMasterViewController.m in Sources */,
 				EDDA87E518A940CB0071622F /* CategoriesViewController.m in Sources */,
