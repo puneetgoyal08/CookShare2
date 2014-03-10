@@ -9,11 +9,15 @@
 #import "AddNewDishViewController.h"
 #import "AddNewDish.h"
 #import "API.h"
+#import "AddNewDishSectionView.h"
+#import "TextViewCell.h"
 
 @interface AddNewDishViewController ()
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) IBOutlet UITextView *dishTitle;
-@property (nonatomic, strong) IBOutlet UITextView *dishDescription;
+@property (nonatomic, strong) IBOutlet UITextField *dishTitle;
+@property (nonatomic, strong) IBOutlet UITextField *dishDescription;
+@property (nonatomic) BOOL updateRows;
+@property (nonatomic) NSMutableDictionary* numberOfRowsInSection;
 @end
 
 @implementation AddNewDishViewController
@@ -35,10 +39,11 @@
 {
     [super viewDidLoad];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    self.dishTitle = [self textViewWithTitle:@"Title of your dish"];
+    self.dishTitle = [self textFieldWithTitle:@"Title of your dish"];
     self.dishTitle.delegate = self;
-    self.dishDescription = [self textViewWithTitle:@"Description of your dish"];
+    self.dishDescription = [self textFieldWithTitle:@"Description of your dish"];
     self.dishDescription.delegate = self;
+    self.numberOfRowsInSection = [[NSMutableDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:[NSNumber numberWithInt:4],[NSNumber numberWithInt:1],[NSNumber numberWithInt:1],[NSNumber numberWithInt:1], nil] forKeys:[[NSArray alloc] initWithObjects:[NSNumber numberWithInt:0],[NSNumber numberWithInt:1],[NSNumber numberWithInt:2],[NSNumber numberWithInt:3], nil]];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -48,12 +53,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UITextView *)textViewWithTitle:(NSString *)titl
+- (UITextField *)textFieldWithTitle:(NSString *)titl
 {
-    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width, 40)];
-    textView.textColor = [UIColor lightGrayColor];
-    textView.text = titl;
-    return textView;
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width, 40)];
+    textField.placeholder = titl;
+    textField.delegate = self;
+    return textField;
 }
 
 - (UIView *)imageViewWithImage:(UIImage *)image
@@ -90,8 +95,7 @@
 
 - (IBAction)buttonTapped:(UIButton *)sender
 {
-    if([sender isKindOfClass:[UIButton class]])
-    {
+    if([sender isKindOfClass:[UIButton class]]) {
         if([sender.titleLabel.text isEqualToString:@"Upload"])
             NSLog(@"upload tapped");
         else if([sender.titleLabel.text isEqualToString:@"Submit"])
@@ -103,11 +107,26 @@
 {
     if([self.dishTitle.text isEqualToString:@""]|| [self.dishDescription.text isEqualToString:@""])
         NSLog(@"both fields are empty");
-    else{
+    else {
+        NSArray *intro = [NSArray arrayWithObjects:self.dishTitle.text, self.dishDescription.text, nil];
+        NSMutableArray *ingridients = [[NSMutableArray alloc] init];
+        for(int i=0;i<[[self.numberOfRowsInSection objectForKey:[NSNumber numberWithInt:1]] integerValue];i++){
+            UITextField *textField = [[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:1]] subviews] lastObject];
+            [ingridients addObject:textField.text];
+        }
+        
+        NSMutableArray *steps = [[NSMutableArray alloc] init];
+        for(int i=0;i<[[self.numberOfRowsInSection objectForKey:[NSNumber numberWithInt:1]] integerValue];i++){
+            UITextField *textField = [[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:2]] subviews] lastObject];
+            [steps addObject:textField.text];
+        }
+ 
         NSArray *photoArray = [[NSBundle mainBundle] pathsForResourcesOfType:@".jpg" inDirectory:@"food_items"];
         int numOfPhotos = [[[API sharedInstance] numberOfPhotos] integerValue];
         NSString *path = [photoArray objectAtIndex:numOfPhotos];
         UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:path]];
+        NSDictionary *info = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:intro, ingridients, steps,iv, nil] forKeys:[NSArray arrayWithObjects:@"intro", @"ingridiends", @"steps", @"imageView", nil]];
+
         [AddNewDish addDishWithTitle:self.dishTitle.text withDescription:self.dishDescription.text withImage:iv inDocument:self.document];
         [[API sharedInstance] setNumberOfPhotos:[NSNumber numberWithInteger:numOfPhotos + 1]];
         [[self navigationController] popViewControllerAnimated:YES];
@@ -118,54 +137,102 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    int numOfRows = [[self.numberOfRowsInSection objectForKey:[NSNumber numberWithInt:section]] integerValue];
+    return numOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    for(UIView *view in cell.contentView.subviews)
-        [view removeFromSuperview];
 
-    switch (indexPath.row) {
-        case 0:
-            [cell.contentView addSubview:self.dishTitle];
-            break;
-        case 1:
-            [cell.contentView addSubview:self.dishDescription];
-            break;
-        case 2:
-            [cell.contentView addSubview:[self buttonWithTitle:@"Upload"]];
-            break;
-        case 3:
-            [cell.contentView addSubview:[self buttonWithTitle:@"Submit"]];
-            break;
-        default:
-            break;
+    if(indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 0:
+                [cell.contentView addSubview:self.dishTitle];
+                break;
+            case 1:
+                [cell.contentView addSubview:self.dishDescription];
+                break;
+            case 2:
+                [cell.contentView addSubview:[self buttonWithTitle:@"Upload"]];
+                break;
+            case 3:
+                [cell.contentView addSubview:[self buttonWithTitle:@"Submit"]];
+                break;
+            default:
+                break;
+        }
+    } else if(indexPath.section == 1) {
+        TextViewCell *textView = [TextViewCell addNewTextViewCellForIndexPath:indexPath withLabel:[NSString stringWithFormat:@"Item %d", indexPath.row+1]];
+        [cell addSubview:textView];
+    } else if(indexPath.section == 2) {
+        TextViewCell *textView = [TextViewCell addNewTextViewCellForIndexPath:indexPath withLabel:[NSString stringWithFormat:@"Step %d", indexPath.row+1]];
+        [cell addSubview:textView];
     }
     return cell;
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if(section == 0)
+        return @"Introduction";
+    else if(section == 1)
+        return @"Ingridients";
+    else if(section == 2)
+        return @"Steps";
+    else
+        return @"Random";
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 3;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if(section == 1) {
+        AddNewDishSectionView *view = [AddNewDishSectionView addNewDishSectionViewForSection:section withLabel:@"Ingridients"];
+        view.delegate = self;
+        return view;
+    }
+    else if(section == 2) {
+        AddNewDishSectionView *view = [AddNewDishSectionView addNewDishSectionViewForSection:section withLabel:@"Steps"];
+        view.delegate = self;
+        return view;
+    }
+        return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 40;
 }
 
 #pragma mark - TextField Delegate Methods
 
-- (void)textViewDidEndEditing:(UITextView *)textView
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    NSLog(@"%@", textView.text);
+    NSLog(@"%@", textField.text);
 }
 
--(BOOL)textViewShouldBeginEditing:(UITextView *)textView
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if(textView.textColor == [UIColor lightGrayColor]){
-        textView.text = @"";
-        textView.textColor = [UIColor blackColor];
+    if([textField.text length]) {
+        [textField resignFirstResponder];
+        return YES;
+    } else {
+        return NO;
     }
-    return YES;
 }
 
+#pragma mark - AddNewSection delegate methods
+
+- (void)addNewSectionForSection:(int)section
+{
+    self.updateRows = YES;
+    int prevNum = [[self.numberOfRowsInSection objectForKey:[NSNumber numberWithInt:section]] integerValue];
+    [self.numberOfRowsInSection setObject:[NSNumber numberWithInt:prevNum+1] forKey:[NSNumber numberWithInt:section]];
+    [self.tableView insertRowsAtIndexPaths:[[NSArray alloc] initWithObjects:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:section] inSection:section], nil] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
 
 @end

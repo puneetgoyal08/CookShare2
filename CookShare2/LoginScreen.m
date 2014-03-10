@@ -30,7 +30,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(IBAction)btnLoginRegisterTapped:(UIButton*)sender {
+- (IBAction)btnLoginRegisterTapped:(UIButton*)sender {
 	//form fields validation
 	if (fldUsername.text.length < 4 || fldPassword.text.length < 4) {
 		[UIAlertView error:@"Enter username and password over 4 chars each."];

@@ -105,6 +105,7 @@
     }
     
     PhotoView *pView = [[PhotoView alloc] initWithIndex:indexPath.row andData:[self.stream objectAtIndex:indexPath.row]];
+    pView.delegate = self;
     [cell.contentView addSubview:pView];
 
 //    dispatch_queue_t downloadQueue = dispatch_queue_create("photo download", NULL);
@@ -156,8 +157,8 @@
 
 -(void)didSelectPhoto:(id)sender
 {
-    PhotoView *view = (PhotoView *)sender;
-    NSLog(@"photo got selected");
+    RecipeViewController *recipeVC = [[RecipeViewController alloc] initWithNibName:@"RecipeViewController" bundle:nil];
+    [[self navigationController] pushViewController:recipeVC animated:YES];
 }
 
 

@@ -16,6 +16,6 @@
 }
 
 //action for when either button is pressed
--(IBAction)btnLoginRegisterTapped:(id)sender;
+- (IBAction)btnLoginRegisterTapped:(id)sender;
 
 @end

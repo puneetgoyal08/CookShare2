@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED2114C218CC540A00BBDD0C /* AddNewDishSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2114C118CC540A00BBDD0C /* AddNewDishSectionView.m */; };
+		ED2114CA18CC54C300BBDD0C /* AddNewDishSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED2114C918CC54C300BBDD0C /* AddNewDishSectionView.xib */; };
+		ED296AA418CDCAFA0037710F /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED296AA318CDCAFA0037710F /* TextViewCell.xib */; };
 		ED32996018B75302001F683B /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = ED32995F18B75302001F683B /* API.m */; };
 		ED32996818B753D1001F683B /* UIAlertView+error.m in Sources */ = {isa = PBXBuildFile; fileRef = ED32996718B753D1001F683B /* UIAlertView+error.m */; };
 		ED32996F18B75553001F683B /* LoginScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = ED32996D18B75553001F683B /* LoginScreen.m */; };
@@ -79,6 +82,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED2114C018CC540A00BBDD0C /* AddNewDishSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewDishSectionView.h; sourceTree = "<group>"; };
+		ED2114C118CC540A00BBDD0C /* AddNewDishSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewDishSectionView.m; sourceTree = "<group>"; };
+		ED2114C918CC54C300BBDD0C /* AddNewDishSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewDishSectionView.xib; sourceTree = "<group>"; };
+		ED296AA318CDCAFA0037710F /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
 		ED32995E18B75302001F683B /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		ED32995F18B75302001F683B /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
 		ED32996618B753D1001F683B /* UIAlertView+error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+error.h"; sourceTree = "<group>"; };
@@ -193,6 +200,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED2114BD18CC53B400BBDD0C /* AddNewDishSectionView */ = {
+			isa = PBXGroup;
+			children = (
+				ED2114C018CC540A00BBDD0C /* AddNewDishSectionView.h */,
+				ED2114C118CC540A00BBDD0C /* AddNewDishSectionView.m */,
+				ED2114C918CC54C300BBDD0C /* AddNewDishSectionView.xib */,
+			);
+			name = AddNewDishSectionView;
+			sourceTree = "<group>";
+		};
 		ED32995D18B752E6001F683B /* Networking Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +490,7 @@
 		EDDA882318AB501B0071622F /* AddNewDishViewController */ = {
 			isa = PBXGroup;
 			children = (
+				ED2114BD18CC53B400BBDD0C /* AddNewDishSectionView */,
 				EDDA882918AB726B0071622F /* TextViewCell */,
 				EDDA882418AB50320071622F /* AddNewDishViewController.h */,
 				EDDA882518AB50320071622F /* AddNewDishViewController.m */,
@@ -486,6 +504,7 @@
 			children = (
 				EDDA882A18AB728A0071622F /* TextViewCell.h */,
 				EDDA882B18AB728A0071622F /* TextViewCell.m */,
+				ED296AA318CDCAFA0037710F /* TextViewCell.xib */,
 			);
 			name = TextViewCell;
 			sourceTree = "<group>";
@@ -581,10 +600,12 @@
 				EDDA87D618A937EB0071622F /* new.png in Resources */,
 				EDDA87E618A940CB0071622F /* CategoriesViewController.xib in Resources */,
 				ED5407B418ACAFB6001277A7 /* submit.png in Resources */,
+				ED2114CA18CC54C300BBDD0C /* AddNewDishSectionView.xib in Resources */,
 				EDDA87DC18A938910071622F /* star.png in Resources */,
 				EDDA882218AA2E450071622F /* RecipeViewController.xib in Resources */,
 				EDDA87D218A937B10071622F /* home.png in Resources */,
 				EDDA87CE18A933310071622F /* reveal-icon@2x.png in Resources */,
+				ED296AA418CDCAFA0037710F /* TextViewCell.xib in Resources */,
 				EDDA87C318A931130071622F /* RearViewController.xib in Resources */,
 				EDDA879C18A9300D0071622F /* Images.xcassets in Resources */,
 				EDDA87EB18A940D60071622F /* NewViewController.xib in Resources */,
@@ -617,6 +638,7 @@
 				ED5407BF18ACD236001277A7 /* AddNewDish.m in Sources */,
 				EDDA879318A9300D0071622F /* main.m in Sources */,
 				ED5407B718ACCE08001277A7 /* Dish.m in Sources */,
+				ED2114C218CC540A00BBDD0C /* AddNewDishSectionView.m in Sources */,
 				EDDA87EF18A940E10071622F /* SettingsViewController.m in Sources */,
 				ED5407BC18ACCF39001277A7 /* CoreDataHelper.m in Sources */,
 				ED740A8918C84FE600146473 /* CacheFileManager.m in Sources */,

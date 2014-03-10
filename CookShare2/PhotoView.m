@@ -55,7 +55,7 @@
                 UIImageView* thumbView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:imageData]];
                 thumbView.frame = CGRectMake(0,0,150,150);
                 thumbView.contentMode = UIViewContentModeScaleToFill;
-                [self insertSubview:thumbView aboveSubview:caption];
+                [self insertSubview:thumbView belowSubview:caption];
 
             });
         });
