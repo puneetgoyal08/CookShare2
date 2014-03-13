@@ -45,9 +45,10 @@
 
 -(BOOL)isAuthorized {
     return [[user objectForKey:@"IdUser"] intValue]>0;
+//    return 1;
 }
 
--(void)commandWithParams:(NSMutableDictionary*)params onCompletion:(connectionResponseBlock)completionBlock {
+-(void)commandWithParams:(NSDictionary *)params onCompletion:(connectionResponseBlock)completionBlock {
     NSMutableURLRequest *request2 = [self setData:params];
     //NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request2 delegate:self];
     [NSURLConnection sendAsynchronousRequest:request2 queue:self.queue completionHandler:completionBlock];
@@ -55,7 +56,8 @@
     //  [connection start];
 }
 
--(NSMutableURLRequest *)setData: (NSMutableDictionary *)params{
+-(NSMutableURLRequest *)setData: (NSDictionary *)params1{
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:params1];
     NSData *imageData = nil;
     if ([params objectForKey:@"file"]) {
         UIImage *img = [params objectForKey:@"file"];
@@ -64,6 +66,8 @@
 	}
 
     NSURL *url = [NSURL URLWithString:@"http://dcetech.com/puneet/iReporter/index.php"];
+//    NSURL *url = [NSURL URLWithString:@"http://localhost:8888/iReporter/index.php"];
+
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     

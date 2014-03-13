@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		ED2114C218CC540A00BBDD0C /* AddNewDishSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2114C118CC540A00BBDD0C /* AddNewDishSectionView.m */; };
 		ED2114CA18CC54C300BBDD0C /* AddNewDishSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED2114C918CC54C300BBDD0C /* AddNewDishSectionView.xib */; };
+		ED29200718D1929F00C65387 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED29200518D1929F00C65387 /* ImagePickerViewController.m */; };
+		ED29200818D1929F00C65387 /* ImagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED29200618D1929F00C65387 /* ImagePickerViewController.xib */; };
 		ED296AA418CDCAFA0037710F /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED296AA318CDCAFA0037710F /* TextViewCell.xib */; };
 		ED32996018B75302001F683B /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = ED32995F18B75302001F683B /* API.m */; };
 		ED32996818B753D1001F683B /* UIAlertView+error.m in Sources */ = {isa = PBXBuildFile; fileRef = ED32996718B753D1001F683B /* UIAlertView+error.m */; };
@@ -85,6 +87,9 @@
 		ED2114C018CC540A00BBDD0C /* AddNewDishSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewDishSectionView.h; sourceTree = "<group>"; };
 		ED2114C118CC540A00BBDD0C /* AddNewDishSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewDishSectionView.m; sourceTree = "<group>"; };
 		ED2114C918CC54C300BBDD0C /* AddNewDishSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewDishSectionView.xib; sourceTree = "<group>"; };
+		ED29200418D1929F00C65387 /* ImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerViewController.h; sourceTree = "<group>"; };
+		ED29200518D1929F00C65387 /* ImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerViewController.m; sourceTree = "<group>"; };
+		ED29200618D1929F00C65387 /* ImagePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePickerViewController.xib; sourceTree = "<group>"; };
 		ED296AA318CDCAFA0037710F /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
 		ED32995E18B75302001F683B /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		ED32995F18B75302001F683B /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
@@ -208,6 +213,16 @@
 				ED2114C918CC54C300BBDD0C /* AddNewDishSectionView.xib */,
 			);
 			name = AddNewDishSectionView;
+			sourceTree = "<group>";
+		};
+		ED29200318D1927B00C65387 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				ED29200418D1929F00C65387 /* ImagePickerViewController.h */,
+				ED29200518D1929F00C65387 /* ImagePickerViewController.m */,
+				ED29200618D1929F00C65387 /* ImagePickerViewController.xib */,
+			);
+			name = ImagePicker;
 			sourceTree = "<group>";
 		};
 		ED32995D18B752E6001F683B /* Networking Files */ = {
@@ -366,6 +381,7 @@
 		EDDA87BA18A9305D0071622F /* views */ = {
 			isa = PBXGroup;
 			children = (
+				ED29200318D1927B00C65387 /* ImagePicker */,
 				ED32996B18B75535001F683B /* LoginScreen */,
 				EDDA882318AB501B0071622F /* AddNewDishViewController */,
 				EDDA881D18AA2E2B0071622F /* RecipeViewController */,
@@ -611,6 +627,7 @@
 				EDDA87EB18A940D60071622F /* NewViewController.xib in Resources */,
 				EDDA87D818A938420071622F /* flower.png in Resources */,
 				EDDA87CD18A933310071622F /* reveal-icon.png in Resources */,
+				ED29200818D1929F00C65387 /* ImagePickerViewController.xib in Resources */,
 				ED32997018B75553001F683B /* LoginScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,6 +665,7 @@
 				ED5407C318ACD339001277A7 /* Dish+Create.m in Sources */,
 				EDDA879A18A9300D0071622F /* CookShare2.xcdatamodeld in Sources */,
 				EDDA87F618A948F50071622F /* RecipeCollectionViewCell.m in Sources */,
+				ED29200718D1929F00C65387 /* ImagePickerViewController.m in Sources */,
 				EDDA87BD18A930650071622F /* SWRevealViewController.m in Sources */,
 				ED32996018B75302001F683B /* API.m in Sources */,
 				EDDA87C218A931130071622F /* RearViewController.m in Sources */,

@@ -24,6 +24,6 @@ typedef void (^connectionResponseBlock)(NSURLResponse *response, NSData *data, N
 //send an API command to the server
 //-(void)commandWithParams:(NSMutableDictionary*)params onCompletion:(JSONResponseBlock)completionBlock;
 -(NSURL*)urlForImageWithId:(NSNumber*)IdPhoto isThumb:(BOOL)isThumb;
--(void)commandWithParams:(NSMutableDictionary*)params onCompletion:(connectionResponseBlock)completionBlock;
+-(void)commandWithParams:(NSDictionary *)params onCompletion:(connectionResponseBlock)completionBlock;
 
 @end

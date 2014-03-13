@@ -15,22 +15,13 @@
 @end
 
 @implementation TextViewCell
+@synthesize text = _text;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+-(NSString *)text
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    return self.textField.text;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 + (id)addNewTextViewCellForIndexPath:(NSIndexPath *)indexPath withLabel:(NSString *)labelName
 {

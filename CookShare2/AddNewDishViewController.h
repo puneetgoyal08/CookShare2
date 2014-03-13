@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AddNewDishSectionView.h"
 
-@interface AddNewDishViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, AddNewSection, UITextFieldDelegate>
+@interface AddNewDishViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, AddNewSection, UITextFieldDelegate, UIImagePickerControllerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UIManagedDocument *document;
 @end

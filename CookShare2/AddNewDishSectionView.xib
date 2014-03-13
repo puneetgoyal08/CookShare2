@@ -8,18 +8,22 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1" customClass="AddNewDishSectionView">
-            <rect key="frame" x="0.0" y="0.0" width="321" height="40"/>
+            <rect key="frame" x="0.0" y="0.0" width="321" height="30"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Steps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbF-qu-kaH">
-                    <rect key="frame" x="21" y="9" width="246" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbF-qu-kaH">
+                    <rect key="frame" x="20" y="4" width="246" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="BN5-CY-eBC"/>
+                        <constraint firstAttribute="width" constant="246" id="S1X-dV-LCR"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2v-gE-47G">
-                    <rect key="frame" x="275" y="5" width="37" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2v-gE-47G">
+                    <rect key="frame" x="274" y="0.0" width="37" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                     <state key="normal" title="Add"/>
@@ -29,6 +33,15 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="GbF-qu-kaH" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="6na-I3-Jvw"/>
+                <constraint firstAttribute="centerY" secondItem="GbF-qu-kaH" secondAttribute="centerY" id="BoO-7k-dZI"/>
+                <constraint firstItem="W2v-gE-47G" firstAttribute="top" secondItem="1" secondAttribute="top" id="DFn-Xh-dmI"/>
+                <constraint firstAttribute="centerY" secondItem="W2v-gE-47G" secondAttribute="centerY" id="GAC-IX-oSU"/>
+                <constraint firstAttribute="trailing" secondItem="W2v-gE-47G" secondAttribute="trailing" constant="10" id="VKc-xH-ETn"/>
+                <constraint firstItem="GbF-qu-kaH" firstAttribute="top" secondItem="1" secondAttribute="top" constant="4" id="iQc-Gw-mhw"/>
+                <constraint firstItem="W2v-gE-47G" firstAttribute="leading" secondItem="GbF-qu-kaH" secondAttribute="trailing" constant="8" id="zia-A1-bnx"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

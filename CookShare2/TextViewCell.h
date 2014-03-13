@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TextViewCell : UITableViewCell <UITextFieldDelegate>
+@interface TextViewCell : UIView <UITextFieldDelegate>
 
 @property (nonatomic, strong) NSString *text;
 + (id)addNewTextViewCellForIndexPath:(NSIndexPath *)indexPath withLabel:(NSString *)labelName;

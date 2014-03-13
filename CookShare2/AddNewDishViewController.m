@@ -18,6 +18,7 @@
 @property (nonatomic, strong) IBOutlet UITextField *dishDescription;
 @property (nonatomic) BOOL updateRows;
 @property (nonatomic) NSMutableDictionary* numberOfRowsInSection;
+@property (nonatomic, strong) UIImage *selectedImage;
 @end
 
 @implementation AddNewDishViewController
@@ -91,13 +92,35 @@
         
     }
     NSLog(@"Upload button tapped");
+    
 }
 
+- (void)takePhoto
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Choose your option" message:@"Choose your option" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Take Photo", @"Choose from Gallery", nil];
+    [alertView show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1){
+        UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.delegate = (id)self;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }else if(buttonIndex == 2){
+        UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.delegate = (id)self;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+        
+}
 - (IBAction)buttonTapped:(UIButton *)sender
 {
     if([sender isKindOfClass:[UIButton class]]) {
         if([sender.titleLabel.text isEqualToString:@"Upload"])
-            NSLog(@"upload tapped");
+            [self takePhoto];
         else if([sender.titleLabel.text isEqualToString:@"Submit"])
             [self submitInfo];
     }
@@ -109,26 +132,29 @@
         NSLog(@"both fields are empty");
     else {
         NSArray *intro = [NSArray arrayWithObjects:self.dishTitle.text, self.dishDescription.text, nil];
+        
+        //Add all the ingridients in an array
         NSMutableArray *ingridients = [[NSMutableArray alloc] init];
         for(int i=0;i<[[self.numberOfRowsInSection objectForKey:[NSNumber numberWithInt:1]] integerValue];i++){
-            UITextField *textField = [[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:1]] subviews] lastObject];
+            TextViewCell *textField = [[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:1]].contentView subviews] lastObject];
             [ingridients addObject:textField.text];
         }
         
+        //Add all the steps in an array
         NSMutableArray *steps = [[NSMutableArray alloc] init];
-        for(int i=0;i<[[self.numberOfRowsInSection objectForKey:[NSNumber numberWithInt:1]] integerValue];i++){
-            UITextField *textField = [[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:2]] subviews] lastObject];
+        for(int i=0;i<[[self.numberOfRowsInSection objectForKey:[NSNumber numberWithInt:2]] integerValue];i++){
+            TextViewCell *textField = [[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:2]].contentView subviews] lastObject];
             [steps addObject:textField.text];
         }
  
-        NSArray *photoArray = [[NSBundle mainBundle] pathsForResourcesOfType:@".jpg" inDirectory:@"food_items"];
-        int numOfPhotos = [[[API sharedInstance] numberOfPhotos] integerValue];
-        NSString *path = [photoArray objectAtIndex:numOfPhotos];
-        UIImageView *iv = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:path]];
-        NSDictionary *info = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:intro, ingridients, steps,iv, nil] forKeys:[NSArray arrayWithObjects:@"intro", @"ingridiends", @"steps", @"imageView", nil]];
+//        NSArray *photoArray = [[NSBundle mainBundle] pathsForResourcesOfType:@".jpg" inDirectory:@"food_items"];
+//        int numOfPhotos = [[[API sharedInstance] numberOfPhotos] integerValue];
+//        NSString *path = [photoArray objectAtIndex:numOfPhotos];
+//        UIImage *image = [UIImage imageWithContentsOfFile:path];
+        NSDictionary *info = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:intro, ingridients, steps,self.selectedImage, nil] forKeys:[NSArray arrayWithObjects:@"intro", @"ingridients", @"steps", @"image", nil]];
 
-        [AddNewDish addDishWithTitle:self.dishTitle.text withDescription:self.dishDescription.text withImage:iv inDocument:self.document];
-        [[API sharedInstance] setNumberOfPhotos:[NSNumber numberWithInteger:numOfPhotos + 1]];
+        [AddNewDish addDishWithInfo:info];
+//        [[API sharedInstance] setNumberOfPhotos:[NSNumber numberWithInteger:numOfPhotos + 1]];
         [[self navigationController] popViewControllerAnimated:YES];
     }
 }
@@ -162,12 +188,13 @@
             default:
                 break;
         }
-    } else if(indexPath.section == 1) {
+    }
+    else if(indexPath.section == 1) {
         TextViewCell *textView = [TextViewCell addNewTextViewCellForIndexPath:indexPath withLabel:[NSString stringWithFormat:@"Item %d", indexPath.row+1]];
-        [cell addSubview:textView];
+        [cell.contentView addSubview:textView];
     } else if(indexPath.section == 2) {
         TextViewCell *textView = [TextViewCell addNewTextViewCellForIndexPath:indexPath withLabel:[NSString stringWithFormat:@"Step %d", indexPath.row+1]];
-        [cell addSubview:textView];
+        [cell.contentView addSubview:textView];
     }
     return cell;
 }
@@ -208,12 +235,12 @@
     return 40;
 }
 
-#pragma mark - TextField Delegate Methods
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%@", textField.text);
+    
 }
+
+#pragma mark - TextField Delegate Methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -233,6 +260,16 @@
     int prevNum = [[self.numberOfRowsInSection objectForKey:[NSNumber numberWithInt:section]] integerValue];
     [self.numberOfRowsInSection setObject:[NSNumber numberWithInt:prevNum+1] forKey:[NSNumber numberWithInt:section]];
     [self.tableView insertRowsAtIndexPaths:[[NSArray alloc] initWithObjects:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:section] inSection:section], nil] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+#pragma mark - UIImagePickerController delegate methods
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    self.selectedImage = image;
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"image picker complete");
 }
 
 @end
