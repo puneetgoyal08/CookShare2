@@ -66,7 +66,10 @@
             [self performSelectorOnMainThread:@selector(presentMainViewController) withObject:nil waitUntilDone:NO];
 
 			//show message to the user
-			[[[UIAlertView alloc] initWithTitle:@"Logged in" message:[NSString stringWithFormat:@"Welcome %@",[res objectForKey:@"username"]] delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil] show];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[[UIAlertView alloc] initWithTitle:@"Logged in" message:[NSString stringWithFormat:@"Welcome %@",[res objectForKey:@"username"]] delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil] show];
+            });
+			
 		} else {
 			//error
 			[UIAlertView error:[json objectForKey:@"error"]];
